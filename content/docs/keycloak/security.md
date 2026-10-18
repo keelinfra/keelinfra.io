@@ -4,10 +4,10 @@ description = "How to report vulnerabilities privately, what is in scope, and ho
 weight = 7
 [extra]
 source_repo_path = "SECURITY.md"
-source_sha = "78fc569"
+source_sha = "9748167"
 +++
 
-<!-- GENERATED from keelinfra/keycloak@78fc569 (SECURITY.md) by scripts/sync_docs.py — edit it THERE, not here. -->
+<!-- GENERATED from keelinfra/keycloak@9748167 (SECURITY.md) by scripts/sync_docs.py — edit it THERE, not here. -->
 
 ## Reporting a vulnerability
 
@@ -35,4 +35,9 @@ This repository is a distribution: the playbooks, roles, and defaults that deplo
 
 ## Supported versions
 
-Until tagged releases begin, the latest commit on `main` is the supported version and security fixes land there.
+Security updates are free, for everyone, subscription or not.
+
+- **The distribution** is supported until at least **31 December 2031**. Security fixes land on `main` and in the next release (`vMAJOR.MINOR.PATCH`); until tagged releases begin, the latest commit on `main` is the supported version. Upgrading to the latest release is how you get a fix, and every upgrade path it needs is drilled in CI ([UPGRADES.md](/docs/keycloak/upgrades/)).
+- **keelinfra LTS builds of Keycloak** (`kc-<tag>-keel<n>`): the newest build on a branch is supported while upstream keeps tagging that branch. When it stops, the fix is the drilled upgrade to a supported stream, described in [CVE-POLICY.md](/docs/keycloak/cve-policy/).
+
+When a fix ships we publish a GitHub security advisory saying who is affected and what to do. How this maps to the EU Cyber Resilience Act, including how we report actively exploited vulnerabilities, is in [CRA.md](https://github.com/keelinfra/keycloak/blob/main/CRA.md).
