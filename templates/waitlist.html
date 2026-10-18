@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="prose">
+  <h1>{{ page.title }}</h1>
+  {% if page.extra.subtitle %}<p class="meta">{{ page.extra.subtitle }}</p>{% endif %}
+  {{ page.content | safe }}
+
+  <h2 id="waitlist">Join the waitlist</h2>
+  {#- No backend, as on /jenkins-assessment/: the form composes an email in the
+      visitor's own mail program. Each email is one signup. #}
+  <form class="lead-form" id="waitlist-form" data-to="{{ config.extra.email }}"
+        data-subject="CRA Release Ledger waitlist">
+    <label for="f-platform">Where your code and releases live</label>
+    <select id="f-platform" name="Platform" required>
+      <option value="">Choose one</option>
+      <option>GitHub</option>
+      <option>GitLab (self-managed)</option>
+      <option>GitLab.com</option>
+      <option>Bitbucket</option>
+      <option>Azure DevOps</option>
+      <option>Other</option>
+    </select>
+
+    <label for="f-products">What you ship into the EU</label>
+    <input id="f-products" name="Products" type="text"
+      placeholder="e.g. 2 products: an on-prem server and a desktop agent">
+
+    <label for="f-versions">How many versions are still in support</label>
+    <input id="f-versions" name="Versions in support" type="text" placeholder="e.g. 4 (two LTS lines)">
+
+    <label for="f-worry">What worries you most about the CRA</label>
+    <textarea id="f-worry" name="Biggest CRA worry" rows="3"
+      placeholder="e.g. the 24-hour reporting, SBOMs for old releases, not knowing where to start"></textarea>
+
+    <label class="check" for="f-pilot">
+      <input id="f-pilot" name="Paid pilot" type="checkbox" value="yes, interested">
+      We would consider a paid pilot.
+    </label>
+
+    <p class="form-note">Pressing the button opens an email to {{ config.extra.email }} in your mail
+    program, with these answers filled in. Nothing is sent until you send it, and this page
+    stores nothing. We write when the first pilots open, and not otherwise.</p>
+    <button class="btn btn-primary" type="submit">Write the email</button>
+  </form>
+  <p class="form-note">Prefer to write it yourself? Email
+  <a href="mailto:{{ config.extra.email }}?subject=CRA%20Release%20Ledger%20waitlist">{{ config.extra.email }}</a>
+  and say where your releases live.</p>
+</article>
+<script>
+(function () {
+  var form = document.getElementById('waitlist-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var lines = [];
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (!el.name) return;
+      if (el.type === 'checkbox' && !el.checked) return;
+      if (!el.value.trim()) return;
+      lines.push(el.name + ':\n' + el.value.trim() + '\n');
+    });
+    var subject = form.dataset.subject;
+    // Same lead event base.html reports for mailto: links, which this
+    // navigation bypasses.
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', {
+        method: 'email_form',
+        email_subject: subject,
+        page_path: location.pathname
+      });
+    }
+    location.href = 'mailto:' + form.dataset.to +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(lines.join('\n'));
+  });
+})();
+</script>
+{% endblock %}
