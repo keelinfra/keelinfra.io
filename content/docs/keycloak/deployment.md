@@ -4,10 +4,10 @@ description = "Putting a 3-node cluster into production: what runs where, the po
 weight = 4
 [extra]
 source_repo_path = "DEPLOYMENT.md"
-source_sha = "112e37d"
+source_sha = "a20a4c3"
 +++
 
-<!-- GENERATED from keelinfra/keycloak@112e37d (DEPLOYMENT.md) by scripts/sync_docs.py — edit it THERE, not here. -->
+<!-- GENERATED from keelinfra/keycloak@a20a4c3 (DEPLOYMENT.md) by scripts/sync_docs.py — edit it THERE, not here. -->
 
 How to put a keelinfra Keycloak cluster into production: what runs where, what the network must
 allow, how backups leave the cluster, where alerts go, and how to prove each piece works before
@@ -173,8 +173,8 @@ restored.
 ./install
 ```
 
-The playbooks run in order: OS preparation, etcd, PostgreSQL and Patroni, HAProxy, pgBackRest
-(including a first full backup to every repository), TLS material, Keycloak, realm
+The playbooks run in order: the preflight checks, OS preparation, TLS material, etcd, PostgreSQL
+and Patroni, HAProxy, pgBackRest (including a first full backup to every repository), Keycloak, realm
 configuration, the VIP if set, and monitoring.
 
 Every install also creates a `demo` realm (user `demo`, password `demo12345`) that the session
