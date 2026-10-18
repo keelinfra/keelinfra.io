@@ -72,7 +72,7 @@
       <thead><tr><th>Component</th><th>What it does</th></tr></thead>
       <tbody>
         <tr><td>Keycloak</td><td>Official upstream release, systemd-managed, DB-persisted sessions, jdbc-ping clustering — a node can die without logging anyone out</td></tr>
-        <tr><td>PostgreSQL + Patroni + etcd</td><td>Automatic leader failover; writes keep flowing when the database leader goes down</td></tr>
+        <tr><td>PostgreSQL + Patroni + etcd</td><td>Automatic leader failover with synchronous replication: when the database leader dies, no write Keycloak was told is saved is lost</td></tr>
         <tr><td>HAProxy (+ optional keepalived VIP)</td><td>Load balancing with TLS passthrough on every node; drain-aware rolling upgrades</td></tr>
         <tr><td>pgBackRest</td><td>Encrypted, scheduled backups and WAL archiving for point-in-time recovery; latest-backup restore tested by drill</td></tr>
         <tr><td>Prometheus + Grafana</td><td>Metrics and alert rules for the things that actually page you; Grafana with the Prometheus data source</td></tr>
@@ -128,7 +128,8 @@
     every commit.</p>
 <pre class="term"><span class="p">$</span> ./verify --drill failover    <span class="c"># Patroni switchover + write through the LB</span>
 <span class="p">$</span> ./verify --drill restore     <span class="c"># pgBackRest restore to a scratch directory</span>
-<span class="p">$</span> ./verify --drill session     <span class="c"># rolling restart; logins must survive</span></pre>
+<span class="p">$</span> ./verify --drill session     <span class="c"># rolling restart; logins must survive</span>
+<span class="p">$</span> ./verify --drill crash       <span class="c"># freeze the database leader mid-write; no saved write may be lost</span></pre>
   </div>
 </section>
 
