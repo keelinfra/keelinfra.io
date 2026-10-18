@@ -4,27 +4,48 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {%- if config.extra.ga_measurement_id %}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.ga_measurement_id }}"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '{{ config.extra.ga_measurement_id }}');
-  // Every quote, early-access and contact button is a mailto: link, and GA's
-  // enhanced measurement does not record those, so the site's leads were
-  // invisible. Report each one as GA's recommended generate_lead event; the
-  // subject line says which offer it was ("Migration / upgrade", ...).
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
-    if (!a) return;
-    var subject = new URLSearchParams(a.href.split('?')[1] || '').get('subject') || '';
-    gtag('event', 'generate_lead', {
-      method: 'email',
-      email_subject: subject,
-      link_text: a.textContent.trim(),
-      page_path: location.pathname
+  // Only the production host reports to GA. The same build is also served by
+  // Cloudflare Pages (<commit>.keelinfra-github-io.pages.dev for every branch)
+  // and by `zola serve`, and those visits were landing in the production
+  // property. Off keelinfra.io, gtag is never defined, so the forms' own
+  // `typeof gtag` checks skip their events too.
+  if (location.hostname === 'keelinfra.io') (function () {
+    var id = '{{ config.extra.ga_measurement_id }}';
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    // The site's own author: open any page once with ?internal=1 in each
+    // browser (?internal=0 undoes it). Hits then carry traffic_type=internal,
+    // which GA's "Internal Traffic" data filter drops.
+    var internal = false;
+    try {
+      var flag = new URLSearchParams(location.search).get('internal');
+      if (flag === '1') localStorage.setItem('ki-internal', '1');
+      if (flag === '0') localStorage.removeItem('ki-internal');
+      internal = localStorage.getItem('ki-internal') === '1';
+    } catch (e) {}
+    gtag('config', id, internal ? { traffic_type: 'internal' } : {});
+    // Every quote, early-access and contact button is a mailto: link, and GA's
+    // enhanced measurement does not record those, so the site's leads were
+    // invisible. Report each one as GA's recommended generate_lead event; the
+    // subject line says which offer it was ("Migration / upgrade", ...).
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+      if (!a) return;
+      var subject = new URLSearchParams(a.href.split('?')[1] || '').get('subject') || '';
+      gtag('event', 'generate_lead', {
+        method: 'email',
+        email_subject: subject,
+        link_text: a.textContent.trim(),
+        page_path: location.pathname
+      });
     });
-  });
+  })();
 </script>
 {%- endif %}
 {%- if page %}

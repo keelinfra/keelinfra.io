@@ -16,4 +16,14 @@
     <li><a href="/blog/">Blog</a></li>
   </ul>
 </article>
+<script>
+  // GitHub Pages serves this page at the missing URL, so the path is the
+  // broken link and the referrer says who links to it.
+  if (typeof gtag === 'function') {
+    gtag('event', 'page_not_found', {
+      page_path: location.pathname + location.search,
+      referrer: document.referrer || '(none)'
+    });
+  }
+</script>
 {% endblock %}
