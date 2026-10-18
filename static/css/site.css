@@ -145,6 +145,14 @@ thead th{border-top:none;font-size:12.5px;text-transform:uppercase;letter-spacin
 .svc .more{font-size:14px;margin:-6px 0 18px}
 .svc .more a{color:var(--accent)}
 .svc .btn{margin-top:auto;text-align:center}
+/* Quote button + the address it writes to (partials/mail_cta.html) */
+.mail-cta{display:flex;flex-direction:column;align-items:center}
+.svc .mail-cta{margin-top:auto;align-items:stretch}
+.svc .mail-cta .btn{margin-top:0}
+.mail-cta .mail-alt{font-size:13px;color:var(--muted);margin-top:8px;text-align:center}
+.mail-addr{color:var(--ink);user-select:all}
+.copy-mail{font:inherit;font-size:12px;font-weight:600;line-height:1.6;color:var(--ink);background:transparent;border:1px solid var(--line-strong);border-radius:6px;padding:0 8px;margin-left:4px;cursor:pointer}
+.copy-mail:hover{border-color:var(--muted)}
 .note{font-size:13.5px;color:var(--muted);margin-top:18px;max-width:70ch}
 
 /* teaser */

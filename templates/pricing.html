@@ -42,7 +42,7 @@
         <h3>Not ready for a project? Start with a {{ s.name }} — {{ s.price_label }}, {{ s.price_note }}</h3>
         <p>{{ s.blurb }}</p>
       </div>
-      <a class="btn btn-primary" href="{{ s.mailto }}">{{ s.cta }}</a>
+      {% set cta_href = s.mailto %}{% set cta_label = s.cta %}{% set cta_class = "btn btn-primary" %}{% include "partials/mail_cta.html" %}
     </div>
     {% endif %}{% endfor %}
     <div class="svc">
@@ -54,7 +54,7 @@
           {% for b in s.bullets %}<li>{{ b }}</li>{% endfor %}
         </ul>
         {% if s.details %}<p class="more"><a href="{{ s.details }}">How it works, and what it does not prove →</a></p>{% endif %}
-        <a class="btn btn-ghost" href="{{ s.mailto }}">{{ s.cta }}</a>
+        {% set cta_href = s.mailto %}{% set cta_label = s.cta %}{% set cta_class = "btn btn-ghost" %}{% include "partials/mail_cta.html" %}
       </div>
       {% endif %}{% endfor %}
     </div>
@@ -83,7 +83,7 @@
           <li>Offline bundles for air-gapped clusters, built and checked for each release you upgrade to</li>
           <li>Email the engineer who builds it, EU business hours</li>
         </ul>
-        <a class="btn btn-primary" href="mailto:hello@keelinfra.io?subject=Standard%20subscription">Subscribe</a>
+        {% set cta_href = "mailto:hello@keelinfra.io?subject=Standard%20subscription" %}{% set cta_label = "Subscribe" %}{% set cta_class = "btn btn-primary" %}{% include "partials/mail_cta.html" %}
       </div>
       <div class="card">
         <h3>Enterprise</h3>
@@ -95,7 +95,7 @@
           <li>A reply by the next EU business day</li>
           <li>Help with security questionnaires and compliance paperwork</li>
         </ul>
-        <a class="btn btn-ghost" href="mailto:hello@keelinfra.io?subject=Enterprise%20subscription">Talk to us</a>
+        {% set cta_href = "mailto:hello@keelinfra.io?subject=Enterprise%20subscription" %}{% set cta_label = "Talk to us" %}{% set cta_class = "btn btn-ghost" %}{% include "partials/mail_cta.html" %}
       </div>
     </div>
     <div class="teaser">
@@ -104,7 +104,7 @@
         <p>Subscriptions are open now. The first five customers keep this price for as long as they
         renew.</p>
       </div>
-      <a class="btn btn-primary" href="mailto:hello@keelinfra.io?subject=Subscription">Email us</a>
+      {% set cta_href = "mailto:hello@keelinfra.io?subject=Subscription" %}{% set cta_label = "Email us" %}{% set cta_class = "btn btn-primary" %}{% include "partials/mail_cta.html" %}
     </div>
   </div>
 </section>

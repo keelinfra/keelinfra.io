@@ -1,0 +1,10 @@
+{#- A quote button plus the address it writes to. mailto: opens nothing for
+    visitors without a mail program set up (webmail only, locked-down work
+    machines), so the address is always on the page, with a Copy button that
+    base.html enables when JavaScript runs.
+    Set before including: cta_href (a mailto: URL), cta_label, cta_class. -#}
+<div class="mail-cta">
+  <a class="{{ cta_class }}" href="{{ cta_href }}">{{ cta_label }}</a>
+  <p class="mail-alt">or email <span class="mail-addr">{{ config.extra.email }}</span>
+  <button type="button" class="copy-mail" data-email="{{ config.extra.email }}" hidden>Copy</button></p>
+</div>
