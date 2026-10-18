@@ -4,10 +4,10 @@ description = "Supported upgrade paths, strategies, and measured service windows
 weight = 5
 [extra]
 source_repo_path = "UPGRADES.md"
-source_sha = "9748167"
+source_sha = "e117daa"
 +++
 
-<!-- GENERATED from keelinfra/keycloak@9748167 (UPGRADES.md) by scripts/sync_docs.py — edit it THERE, not here. -->
+<!-- GENERATED from keelinfra/keycloak@e117daa (UPGRADES.md) by scripts/sync_docs.py — edit it THERE, not here. -->
 
 Every path listed here has been executed end-to-end: install the source version,
 create realms/users/sessions, run `./upgrade`, and assert that logged-in sessions
@@ -164,7 +164,9 @@ its CVEs are not sorted in [CVE-POLICY.md](/docs/keycloak/cve-policy/) yet.
 
 We build the tags ourselves and publish them as
 [`kc-<version>-keel<rev>` releases](https://github.com/keelinfra/keycloak/releases)
-(see [lts/](https://github.com/keelinfra/keycloak/tree/main/lts)); `./upgrade --dist-url <release url>` installs them.
+(see [lts/](https://github.com/keelinfra/keycloak/tree/main/lts)); `./upgrade --dist-url <release url>` installs them, checked against
+the `SHA256SUMS` in the same release. A tarball from anywhere else needs
+`-e keycloak_dist_checksum=sha256:<hex>`.
 
 | From | To | Strategy | Sessions survive | Verified on | Notes |
 |---|---|---|---|---|---|
