@@ -152,6 +152,19 @@
   </div>
 </section>
 
+<section id="errors" style="padding-top:0">
+  <div class="wrap">
+    <h2>The error that brings people here</h2>
+    <p class="sub">After a controller upgrade, an agent on Java 8, 11 or 17 fails to start with:</p>
+<pre class="term" style="white-space:pre-wrap">java.lang.UnsupportedClassVersionError: hudson/remoting/Launcher has been compiled by a more recent version of the Java Runtime (class file version 65.0), this version of the Java Runtime only recognizes class file versions up to 52.0</pre>
+    <p class="sub">Class file version 65.0 is Java 21 (61.0 is Java 17, 55.0 is Java 11); 52.0 is Java 8.
+    If the host can install a newer Java, do that. If it can't, as on AIX, Solaris or HP-UX, or
+    where the JDK must stay as it is, <a class="textlink" href="#install">install Agent8</a> on it.
+    On an SSH node that still shows this error, set the node's <em>Java Path</em> to the
+    <code>java</code> file Agent8 installed.</p>
+  </div>
+</section>
+
 <section id="faq" style="padding-top:0">
   <div class="wrap">
     <h2>Questions teams ask first</h2>
