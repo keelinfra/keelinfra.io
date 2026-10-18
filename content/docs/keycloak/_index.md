@@ -15,7 +15,7 @@ features. Source: [github.com/keelinfra/keycloak](https://github.com/keelinfra/k
 | Component | Role |
 |---|---|
 | **Keycloak** | Official upstream release under systemd; `jdbc-ping` clustering; DB-persisted sessions |
-| **PostgreSQL + Patroni + etcd** | Database HA with automatic leader failover |
+| **PostgreSQL + Patroni + etcd** | Database HA with automatic leader failover; synchronous replication, so a failover loses no saved write |
 | **HAProxy** (+ optional keepalived VIP) | Load balancing with TLS passthrough on every node |
 | **pgBackRest** | Encrypted scheduled backups, with WAL archiving for point-in-time recovery |
 | **Prometheus + Grafana** | Metrics and alert rules; Grafana comes with the Prometheus data source, no dashboards yet |
