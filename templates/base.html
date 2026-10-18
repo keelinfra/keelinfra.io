@@ -28,8 +28,12 @@
 </script>
 {%- endif %}
 {%- if page %}
-  {%- set m_title = page.title ~ " — keelinfra" %}
-  {%- set m_desc = page.description | default(value=config.description) %}
+  {#- seo_title / seo_description: a shorter, query-first version for search
+      results (titles get cut at about 60 characters, descriptions at about
+      155). The page's own title and description stay the headline and the
+      blog-index blurb. #}
+  {%- set m_title = page.extra.seo_title | default(value=page.title) ~ " — keelinfra" %}
+  {%- set m_desc = page.extra.seo_description | default(value=page.description | default(value=config.description)) %}
   {%- set m_path = page.path %}
   {%- set m_og = page.extra.og_image | default(value=config.extra.og_image_default) %}
 {%- elif section %}

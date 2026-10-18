@@ -3,6 +3,8 @@ title = "Keycloak fixed a critical account-takeover bug. Three of its release st
 date = 2026-09-18
 description = "CVE-2026-18963 (CVSS 9.1) is fixed in 26.4.15, 26.6.6 and 26.7.2. Only one of those is a release you can download. On 26.4 and 26.6 the fix is a git tag with no artifact; on 26.2 it does not exist at all. Where the fix actually is, why your scanner may not tell you, and the tested way off each stream."
 [extra]
+seo_title = "Keycloak CVE-2026-18963 account takeover: where the fix is"
+seo_description = "CVE-2026-18963 (GHSA-4gv3-mc9p-5wqc, CVSS 9.1) is fixed in Keycloak 26.4.15, 26.6.6 and 26.7.2. Only 26.7.2 ships a download; the tested way off the rest."
 og_image = "/assets/social-preview-keycloak.png"
 +++
 

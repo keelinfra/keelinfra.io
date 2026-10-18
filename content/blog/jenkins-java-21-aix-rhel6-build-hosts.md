@@ -2,6 +2,9 @@
 title = "Jenkins requires Java 21. What happens to your AIX 7.1 and RHEL 6 build hosts?"
 date = 2026-10-13
 description = "Jenkins needs Java 21 on the controller and on every agent. AIX 7.1, Solaris and HP-UX cannot run it, so their teams stay on Jenkins 2.346.3. Where each Jenkins version is locked, the highest Java each legacy platform can run, with sources, and Agent8: a Jenkins agent that runs on Java 8."
+[extra]
+seo_title = "Jenkins Java 21 vs. AIX 7.1 and RHEL 6 build hosts"
+seo_description = "Jenkins needs Java 21 on every agent. AIX 7.1, Solaris and HP-UX can't run it; RHEL 6 x86_64 can, with Corretto 21. Version locks, sources, a Java 8 agent."
 +++
 
 Plenty of companies ship software on a long tail of platforms. Besides mainstream Linux there is
