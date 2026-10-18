@@ -1,0 +1,27 @@
+content/blog/air-gapped-keycloak-delete-the-default-route.md
+  s_0704582a1f438d::t_365886f0e9ef4e 6-7
+content/blog/keycloak-26.7.3-cve-triage.md
+  s_0704582a1f438d::t_365886f0e9ef4e 6-7
+content/blog/keycloak-critical-fix-no-release.md
+  s_0704582a1f438d::t_365886f0e9ef4e 6-7
+templates/base.html
+  s_0704582a1f438d::t_0059c0439839d9 31-36
+content/blog/jenkins-java-21-aix-rhel6-build-hosts.md
+  s_0704582a1f438d::t_365886f0e9ef4e 5-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bf998d3a9aa87d55bc1dc6ee186e3040c95cd51c",
+  "prompts": {},
+  "sessions": {
+    "s_0704582a1f438d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b02eef67-835f-4354-a053-916b03a30463",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Xianpeng Shen <xianpeng.shen@gmail.com>"
+    }
+  }
+}
