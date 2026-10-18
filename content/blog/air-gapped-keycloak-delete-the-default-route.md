@@ -3,6 +3,8 @@ title = "\"Air-gap ready\" means nothing until you delete the default route"
 date = 2026-10-16
 description = "An HA Keycloak cluster pulls from at least five places on the internet during install. We put all of it in one 834 MB tarball, then proved it in CI the only honest way: delete the nodes' default route, install three nodes, run every drill, and do a rolling upgrade. 14 minutes, no network. What has to be in the bundle, and the two traps that make most offline kits fail on a real minimal server."
 [extra]
+seo_title = "Air-gapped Keycloak: prove it by deleting the default route"
+seo_description = "An offline Keycloak HA install needs at least five internet sources. We packed them into one 834 MB bundle and proved it in CI with no default route."
 og_image = "/assets/social-preview-keycloak.png"
 +++
 
