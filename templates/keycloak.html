@@ -86,7 +86,15 @@
 <section id="quickstart" style="padding-top:0">
   <div class="wrap">
     <div class="kicker">Quick start</div>
-    <h2>~10 minutes on 3 clean VMs</h2>
+    <h2>Try it on your laptop first</h2>
+<pre class="term"><span class="p">$</span> git clone https://github.com/keelinfra/keycloak &amp;&amp; cd keycloak
+<span class="p">$</span> ./try          <span class="c"># 3-node cluster in Docker; prints the admin URL and password</span>
+<span class="p">$</span> ./try --down   <span class="c"># remove it</span></pre>
+    <p class="note">Three containers stand in for three servers and get the same <code>./install</code> as real
+    machines: 7 minutes on a 4-core CI runner, re-checked on every change to the roles. Needs Docker with
+    about 10 GB of memory. Then stop a node, run <code>dev/ha-exec.sh ./verify --drill failover</code>,
+    and watch the console keep working.</p>
+    <h2 style="margin-top:40px">~10 minutes on 3 clean VMs</h2>
 <pre class="term"><span class="p">$</span> git clone https://github.com/keelinfra/keycloak &amp;&amp; cd keycloak
 <span class="p">$</span> ./configure -c examples/ha-3node.yml   <span class="c"># describe your nodes</span>
 <span class="p">$</span> ./install                              <span class="c"># then open https://&lt;your-host&gt;/admin</span></pre>

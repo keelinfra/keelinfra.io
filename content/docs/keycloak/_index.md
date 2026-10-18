@@ -36,6 +36,8 @@ pre-installed on the targets.
 
 ## Where to start
 
+0. Just looking? `./try` in a clone of the repo runs a 3-node cluster in Docker on your machine and
+   prints the admin console URL and password; `./try --down` removes it.
 1. [Requirements](/docs/keycloak/requirements/) — what machines you need
 2. [Install: 3-node HA](/docs/keycloak/install-ha/) — the production path
 3. [Verify & drills](/docs/keycloak/verify/) — prove it works before you trust it
