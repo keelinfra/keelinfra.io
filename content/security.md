@@ -87,7 +87,8 @@ manufacturer and do now what the act will require:
 What we meet, what is still open, and how we read the act:
 [CRA.md](https://github.com/keelinfra/keycloak/blob/main/CRA.md). If you ship software into the EU
 and want to know what it means for your own release pipeline,
-[ask us](mailto:hello@keelinfra.io?subject=CRA%20question).
+[ask us](mailto:hello@keelinfra.io?subject=CRA%20question). The tooling we use for our own
+releases is open source: [CRA Release Ledger](/cra/).
 
 ## What we don't have
 
