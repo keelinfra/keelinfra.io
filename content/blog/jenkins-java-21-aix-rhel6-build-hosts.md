@@ -184,7 +184,7 @@ Not yet verified: **AIX with IBM Java 8, and builds on Solaris and HP-UX.** Open
 the JVM that AIX uses, but not AIX itself. Update, October 2026: on a real Solaris host with
 Oracle Java 8 and a real HP-UX host on Itanium with HP Java 8, Agent8 now installs and connects
 over SSH; the first Solaris run found a problem with Solaris' signed security providers, which is
-fixed. We will publish build results
+fixed. It now connects on a real AIX host with IBM Java 8 too. We will publish build results
 when we have them. Until then, treat Agent8 as working on Linux with Java 8, not as proven on
 your platform.
 
