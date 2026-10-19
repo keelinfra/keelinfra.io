@@ -160,6 +160,9 @@ thead th{border-top:none;font-size:12.5px;text-transform:uppercase;letter-spacin
 .teaser .t-main{flex:1;min-width:260px}
 .teaser h3{font-size:17px}
 .teaser p{font-size:14.5px;color:var(--muted);margin-top:6px}
+/* Below ~620px the quote button wraps under the text: line it up with the text
+   (as "View on GitHub" is) instead of centring it over the address line */
+@media(max-width:720px){.teaser .mail-cta{align-items:flex-start}.teaser .mail-alt{text-align:left}}
 
 /* prose (markdown pages) */
 .prose{max-width:760px;padding:56px 24px 72px;margin:0 auto}
