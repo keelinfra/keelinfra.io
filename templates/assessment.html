@@ -41,6 +41,7 @@
   </form>
   <p class="form-note">Prefer to write it yourself? Email
   <a href="mailto:{{ config.extra.email }}?subject=Jenkins%20legacy%20build%20host%20assessment">{{ config.extra.email }}</a>
+  {% set copy_subject = "Jenkins legacy build host assessment" %}{% include "partials/copy_mail.html" %}
   with your Jenkins version and the OS versions of the hosts that hold it back.</p>
 </article>
 <script>

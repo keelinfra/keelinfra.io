@@ -155,5 +155,49 @@
     project, and has no connection to Keel Infrastructure Corp. (Nasdaq: KEEL).</p>
   </div>
 </footer>
+<script>
+  // Copy buttons next to the email address (partials/mail_cta.html): for
+  // visitors whose mailto: links open nothing. Reported as copy_email, with
+  // the subject of the offer it sits next to.
+  (function () {
+    var buttons = document.querySelectorAll('button.copy-mail');
+    for (var i = 0; i < buttons.length; i++) buttons[i].hidden = false;
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('button.copy-mail');
+      if (!b) return;
+      var addr = b.getAttribute('data-email');
+      var subject = b.getAttribute('data-subject');
+      var link = b.closest('.mail-cta') && b.closest('.mail-cta').querySelector('a[href^="mailto:"]');
+      if (!subject && link) subject = new URLSearchParams(link.href.split('?')[1] || '').get('subject') || '';
+      function say(text) {
+        b.textContent = text;
+        setTimeout(function () { b.textContent = 'Copy'; }, 2000);
+      }
+      function done() { say('Copied'); }
+      function selectAddress() {
+        // No clipboard access: select the address so Ctrl/Cmd+C works.
+        var span = b.parentNode.querySelector('.mail-addr') || b.previousElementSibling;
+        if (!span) return;
+        var r = document.createRange();
+        r.selectNodeContents(span);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(r);
+        say('Selected');
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(addr).then(done, selectAddress);
+      } else {
+        selectAddress();
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'copy_email', {
+          email_subject: subject || '',
+          page_path: location.pathname
+        });
+      }
+    });
+  })();
+</script>
 </body>
 </html>

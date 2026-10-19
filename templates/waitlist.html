@@ -44,6 +44,7 @@
   </form>
   <p class="form-note">Prefer to write it yourself? Email
   <a href="mailto:{{ config.extra.email }}?subject=CRA%20Release%20Ledger%20waitlist">{{ config.extra.email }}</a>
+  {% set copy_subject = "CRA Release Ledger waitlist" %}{% include "partials/copy_mail.html" %}
   and say where your releases live.</p>
 </article>
 <script>
