@@ -1,0 +1,11 @@
+# Read by Cloudflare Pages only (GitHub Pages, which serves keelinfra.io, ignores it).
+# The Cloudflare Pages project builds every branch of this repo. Its production
+# alias, keelinfra-github-io.pages.dev, is a full copy of the site that Cloudflare
+# does not mark noindex (it does so only for <commit>.<project>.pages.dev
+# previews). Keep every pages.dev copy out of search indexes; keelinfra.io is
+# the one to index.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
