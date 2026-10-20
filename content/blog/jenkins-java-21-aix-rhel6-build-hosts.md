@@ -163,7 +163,7 @@ three steps:
 
 ### What has been verified, and what has not
 
-Agent8 is released and free to use; it has been tested on real AIX, Solaris and HP-UX hosts.
+Agent8 is released and free to use; it has been tested on AIX, Solaris and HP-UX.
 Its CI tests every change, and runs weekly, against the current Jenkins
 LTS and weekly release. Each run installs Agent8 with `install.sh` over a stock `agent.jar` on
 an old Java, starts it with the usual command, and checks:
@@ -180,10 +180,10 @@ an old Java, starts it with the usual command, and checks:
 The Java 8 runs use Temurin 8 on CentOS 6.10, and OpenJ9 8 (IBM Semeru) on Linux, which is
 the JVM family of IBM Java 8 on AIX. Java 11 and Java 17 builds are tested on Linux against the current LTS.
 
-Update, October 2026: Agent8 has been tested on real hosts: Solaris with Oracle Java 8, HP-UX
-on Itanium with HP Java 8, and AIX with IBM Java 8. The first Solaris and AIX runs found a
-problem with signed security providers, which is fixed. These hosts are not in CI, so try it
-on one of your hosts before moving a whole fleet.
+Update, October 2026: Agent8 has been tested on Solaris with Oracle Java 8, HP-UX on Itanium
+with HP Java 8, and AIX with IBM Java 8. Testing there found a problem with signed security
+providers, which is fixed. These platforms are not in CI, so try it on one of your hosts before
+moving a whole fleet.
 
 Known gaps:
 
