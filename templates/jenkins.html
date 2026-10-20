@@ -19,7 +19,7 @@
         <span class="chip ok">Available</span>
         <span class="chip">Free · MIT</span>
         <span class="chip">Linux tested in CI</span>
-        <span class="chip exp">AIX · Solaris · HP-UX experimental</span>
+        <span class="chip ok">Tested on AIX · Solaris · HP-UX</span>
       </div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#install">Install Agent8</a>
@@ -90,10 +90,9 @@
   <div class="wrap">
     <div class="kicker">Support</div>
     <h2>Where it runs today</h2>
-    <p class="lead">Linux is tested in CI on every change. On real Solaris (Oracle Java 8) and
-    HP-UX (Itanium, HP Java 8), Agent8 now installs and connects over SSH, and it connects on real AIX
-    (IBM Java 8); builds on all three are still being verified. <a class="textlink" href="/jenkins-assessment/">Tell us if you can help verify
-    one</a>.</p>
+    <p class="lead">Linux is tested in CI on every change. Agent8 has also been tested on AIX
+    (IBM Java 8), Solaris (Oracle Java 8) and HP-UX (Itanium, HP Java 8); those platforms are not in CI.
+    <a class="textlink" href="/jenkins-assessment/">Tell us</a> what your hosts run.</p>
     <div class="table-scroll">
     <table class="status-table">
       <thead><tr><th>Build host</th><th>Java</th><th>Status</th></tr></thead>
@@ -101,9 +100,9 @@
         <tr><td>Linux, including RHEL/CentOS 6</td><td class="mono">HotSpot 8</td><td><span class="chip ok">Tested in CI</span></td></tr>
         <tr><td>Linux, IBM Semeru (OpenJ9, the JVM family of IBM Java 8)</td><td class="mono">OpenJ9 8</td><td><span class="chip ok">Tested in CI · best effort</span></td></tr>
         <tr><td>Linux</td><td class="mono">HotSpot 11, 17</td><td><span class="chip ok">Tested in CI (LTS)</span></td></tr>
-        <tr><td>AIX 7.1 / 7.2</td><td class="mono">IBM Java 8</td><td><span class="chip exp">Connects on real AIX · experimental</span></td></tr>
-        <tr><td>Solaris</td><td class="mono">Java 8, 11</td><td><span class="chip exp">Connects on real Solaris · experimental</span></td></tr>
-        <tr><td>HP-UX (Itanium)</td><td class="mono">Java 8</td><td><span class="chip exp">Connects on real HP-UX · experimental</span></td></tr>
+        <tr><td>AIX 7.1 / 7.2</td><td class="mono">IBM Java 8</td><td><span class="chip ok">Tested</span></td></tr>
+        <tr><td>Solaris</td><td class="mono">Java 8, 11</td><td><span class="chip ok">Tested</span></td></tr>
+        <tr><td>HP-UX (Itanium)</td><td class="mono">Java 8</td><td><span class="chip ok">Tested</span></td></tr>
       </tbody>
     </table>
     </div>
@@ -203,7 +202,7 @@
       </div>
       <div>
         <h3>What hasn't been tested yet?</h3>
-        <p>Builds on real Solaris, HP-UX and AIX; plugins that run their own code on the agent beyond
+        <p>Plugins that run their own code on the agent beyond
         Git checkout (JGit) and credentials, such as Maven or Docker; and the Maven project type.
         The <a href="https://github.com/keelinfra/agent8#known-gaps">README</a> keeps the
         list.</p>

@@ -13,7 +13,7 @@ yourself: the README has the install script and an Ansible playbook, and
 
 Write to us when that is not enough:
 
-- **Your hosts run AIX, Solaris or HP-UX.** Agent8 connects on real Solaris, HP-UX and AIX; builds there are still being verified. We run it
+- **Your hosts run AIX, Solaris or HP-UX.** Agent8 has been tested on AIX, Solaris and HP-UX. We run it
   with you on your platform as a pilot, and fix what breaks.
 - **You need to know whether your plugins work.** Plugins that run their own code on agents
   are the main open risk on a Java 8 agent. CI tests Git checkout (JGit) and credentials
