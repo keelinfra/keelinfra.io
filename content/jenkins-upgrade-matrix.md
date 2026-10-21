@@ -1,6 +1,6 @@
 +++
 title = "Which Jenkins LTS lines can go straight to 2.580.1"
-description = "We started Jenkins 328 times: every LTS line from 2.60.3 to 2.568.3, with the 100 and the 300 most installed plugins, upgraded to 2.580.1 offline by replacing only the core and in steps. From 2.401.3 a core-only upgrade loaded every plugin. From 2.346.3 or older it never did, because 2.580.1 no longer ships the plugins that were split out of core."
+description = "We started Jenkins 328 times: every LTS line from 2.60.3 to 2.568.3, with the 100 and the 300 most installed plugins, upgraded to 2.580.1 by replacing only the core and in steps. From 2.401.3 a core-only upgrade loaded every plugin. From 2.346.3 or older it never did, with or without network access, because 2.580.1 no longer ships the plugins that were split out of core."
 path = "jenkins/upgrade-matrix"
 template = "page.html"
 
@@ -10,8 +10,8 @@ subtitle = "Rehearsed 2026-10-21 · 38 LTS lines · 100 and 300 plugins · 328 J
 
 **Short answer.** If your controller is on 2.401.3 or newer, replacing only the war, the
 package or the image with 2.580.1 loaded all of the 300 most installed plugins. On 2.346.3 or
-older it never did without network access: plugins failed to load, and with 300 plugins 12 of
-those 21 lines did not start at all. Going in steps, through 2.346.3, 2.462.3 and 2.541.3 and
+older it never did, with or without network access: plugins failed to load, and with 300
+plugins 12 of those 21 lines did not start at all. Going in steps, through 2.346.3, 2.462.3 and 2.541.3 and
 changing Java on the way, loaded every plugin from every line. 2.580.1 needs Java 21, on the
 controller and on the agents.
 
@@ -19,10 +19,13 @@ controller and on the agents.
 [2.574](https://www.jenkins.io/changelog/#v2.574) and
 [2.577](https://www.jenkins.io/changelog/#v2.577) took the plugins that were split out of
 core out of the war. Before, an upgraded controller installed the ones it was missing from
-its own war. Now it has to get them from the update center. A controller older than 2.356
-that cannot reach the update center comes up on 2.580.1 without `instance-identity`, and
-older ones also without `sshd` and the JavaMail plugins. If yours is offline, install those
-plugins before you replace the core.
+its own war. Jenkins does not download them when it starts, so a controller older than 2.356
+comes up on 2.580.1 without `instance-identity`, and older ones also without `sshd` and the
+JavaMail plugins. This happens even when the update center is reachable: we repeated the
+upgrade from 2.346.3 and 2.277.4 with network access and got the same failure. If yours is on
+2.356 or older, upgrade to an LTS that still bundles them (2.568.3 or earlier) first, update
+your plugins there, and only then go to 2.580.1. Copying in `instance-identity` alone is not
+enough: it needs a newer `bouncycastle-api` too.
 
 ## How we tested
 
@@ -129,9 +132,8 @@ steps. The lines before it:
 
 ## What this does not cover
 
-- We tested without network. A controller that reaches the update center during the upgrade
-  should download the split-out plugins itself, as the Jenkins changelog describes. We have not
-  tested that.
+- The table was rehearsed without network. With network access we repeated only the upgrades
+  from 2.346.3 and 2.277.4 with 300 plugins; both failed the same way.
 - These are synthetic controllers: popular plugins, but no jobs, no configuration as code, no
   credentials and no agents. Your controller has pinned versions and plugins nobody else uses.
 - 2.289.3 and 2.303.3 already fail before the upgrade, with about 100 plugins down on a
@@ -151,5 +153,5 @@ Jenkins.instance.pluginManager.plugins.sort { it.shortName }.each { println "${i
 
 We run the same rehearsal with your plugins and your target version, and reply in writing:
 which stops your upgrade needs, which Java each one runs on, which plugins fail at which
-stop, and which split-out plugins to install first if the controller is offline. The first
-answer is free.
+stop, and which split-out plugins it is missing. This is free: real plugin lists are how we
+test the rehearsal.
