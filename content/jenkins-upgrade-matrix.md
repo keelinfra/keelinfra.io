@@ -155,3 +155,7 @@ We run the same rehearsal with your plugins and your target version, and reply i
 which stops your upgrade needs, which Java each one runs on, which plugins fail at which
 stop, and which split-out plugins it is missing. This is free: real plugin lists are how we
 test the rehearsal.
+
+Or run it yourself: the table was made with [jenkins-upgrade-check](/jenkins/upgrade-check/),
+which plans the stops for your plugin list, rehearses each one in a container, and after the
+real upgrade says whether to keep it or roll back.
