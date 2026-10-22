@@ -351,7 +351,7 @@ ANSIBLE_VAULT_PASSWORD_FILE=inventory/.vault_pass ansible-vault view inventory/g
   node's system and JDK trust stores and restarts Keycloak one node at a time where it still
   holds the old store; the other nodes keep serving. CI puts a distrusted root back into the JDK
   store of a running three-node cluster and removes it this way. See the
-  [CVE policy](CVE-POLICY.md#when-a-certificate-authority-is-distrusted).
+  [CVE policy](/docs/keycloak/cve-policy/#when-a-certificate-authority-is-distrusted).
 - **Security fixes upstream:** see the [CVE policy](/docs/keycloak/cve-policy/).
 
 ## Known gaps
