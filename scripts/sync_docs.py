@@ -49,10 +49,18 @@ def front_matter(title, weight, description, source_path, sha):
 
 
 def rewrite_links(md):
+    """Map repo-relative link targets; keep any #fragment. A relative path with
+    no site page goes to the file on GitHub, so a new link in the repo never
+    lands as a broken link here."""
     def repl(m):
-        text, target = m.group(1), m.group(2)
-        return f"[{text}]({LINK_MAP.get(target, target)})"
-    return re.sub(r"\[([^\]]+)\]\(([^)#\s]+)\)", repl, md)
+        text, target, frag = m.group(1), m.group(2), m.group(3) or ""
+        if target in LINK_MAP:
+            target = LINK_MAP[target]
+        elif not re.match(r"[a-z][a-z0-9+.-]*:|/", target):
+            kind = "tree" if target.endswith("/") else "blob"
+            target = f"{REPO_URL}/{kind}/main/{target.rstrip('/')}"
+        return f"[{text}]({target}{frag})"
+    return re.sub(r"\[([^\]]+)\]\(([^)#\s]+)(#[^)\s]*)?\)", repl, md)
 
 
 def strip_heading(md):
