@@ -4,10 +4,10 @@ description = "The annotated cluster definition for a single-node install."
 weight = 9
 [extra]
 source_repo_path = "examples/single-node.yml"
-source_sha = "620a0c2"
+source_sha = "ccd143d"
 +++
 
-<!-- GENERATED from keelinfra/keycloak@620a0c2 (examples/single-node.yml) by scripts/sync_docs.py — edit it THERE, not here. -->
+<!-- GENERATED from keelinfra/keycloak@ccd143d (examples/single-node.yml) by scripts/sync_docs.py — edit it THERE, not here. -->
 
 The complete cluster definition for a single-node install (no HA — evaluation, dev, or small internal setups). Run `./configure -c examples/single-node.yml` against it.
 

@@ -4,10 +4,10 @@ description = "Putting a 3-node cluster into production: what runs where, the po
 weight = 4
 [extra]
 source_repo_path = "DEPLOYMENT.md"
-source_sha = "620a0c2"
+source_sha = "ccd143d"
 +++
 
-<!-- GENERATED from keelinfra/keycloak@620a0c2 (DEPLOYMENT.md) by scripts/sync_docs.py — edit it THERE, not here. -->
+<!-- GENERATED from keelinfra/keycloak@ccd143d (DEPLOYMENT.md) by scripts/sync_docs.py — edit it THERE, not here. -->
 
 How to put a keelinfra Keycloak cluster into production: what runs where, what the network must
 allow, how backups leave the cluster, where alerts go, and how to prove each piece works before
@@ -333,7 +333,8 @@ ANSIBLE_VAULT_PASSWORD_FILE=inventory/.vault_pass ansible-vault view inventory/g
   certificate, and the HTTPS certificate with `tls_mode: selfsigned`) are renewed with
   `./renew-certs`: new certificates from the same CAs, loaded by each service without downtime,
   checked port by port. CI renews them on a running three-node cluster. With `tls_mode: custom`,
-  replace the files, re-run `./configure` and `./install`.
+  replace the files, re-run `./configure` and `./install`; if the CA changed, then `./update-trust`,
+  which restarts Keycloak one node at a time so its JDK trusts the new CA (`./verify` says so).
 - **A node's machine is lost** (dead disk, host that will not boot): give the new machine the
   old node's address and SSH access for `ssh_user`, then `./replace-node <node name>`. It checks
   that the other nodes are healthy, swaps the etcd member, installs the node, lets PostgreSQL
@@ -344,6 +345,13 @@ ANSIBLE_VAULT_PASSWORD_FILE=inventory/.vault_pass ansible-vault view inventory/g
   the older history) and new, empty monitoring history. CI kills the third node, then the first,
   of a running three-node cluster and replaces each with a blank machine. A new address is not
   scripted.
+- **A certificate authority is distrusted** (its keys leaked, as with eMudhra in October 2026):
+  `./verify` fails while a node still trusts a root in `distrusted_cas`, or while Keycloak runs
+  with a JDK trust store older than the system one. `./update-trust` removes the roots from every
+  node's system and JDK trust stores and restarts Keycloak one node at a time where it still
+  holds the old store; the other nodes keep serving. CI puts a distrusted root back into the JDK
+  store of a running three-node cluster and removes it this way. See the
+  [CVE policy](CVE-POLICY.md#when-a-certificate-authority-is-distrusted).
 - **Security fixes upstream:** see the [CVE policy](/docs/keycloak/cve-policy/).
 
 ## Known gaps
