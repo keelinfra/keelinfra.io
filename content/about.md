@@ -1,31 +1,31 @@
 +++
 title = "About"
-description = "keelinfra is built by Xianpeng Shen, the engineer who answers your email — EU-based, shipping production-grade self-hosted infrastructure with every claim proven in public."
+description = "keelinfra is built by Xianpeng Shen, the engineer who answers your email — EU-based, shipping open-source tools for Jenkins with every claim proven in public."
 template = "page.html"
 +++
 
-keelinfra builds production-grade, self-hosted distributions of open-source infrastructure.
-There are two today: [a Keycloak distribution](/keycloak/) — HA, backups, monitoring, and upgrade
-paths re-proven nightly in public CI — and [Agent8 for Jenkins](/jenkins/), which keeps build
-hosts stuck on Java 8, 11 or 17 connected to a current Jenkins controller.
+keelinfra builds open-source tools that keep Jenkins and the machines around it current:
+[Agent8 for Jenkins](/jenkins/), which keeps build hosts stuck on Java 8, 11 or 17 connected to a
+current Jenkins controller, and the [Jenkins upgrade matrix](/jenkins/upgrade-matrix/), which shows
+how an old controller gets to the current LTS. (An earlier Keycloak distribution was
+[discontinued](/keycloak/) in October 2026.)
 
 ## Deliberately small
 
 keelinfra is not a platform vendor with an account team. It's built by
-[Xianpeng Shen](https://shenxianpeng.dev/about/), an engineer based in Lithuania, who wrote
-every playbook in the distribution and publishes every claim with a receipt. When you email
+[Xianpeng Shen](https://shenxianpeng.dev/about/), an engineer based in Lithuania, who builds the tools and
+publishes every claim with a receipt. When you email
 [hello@keelinfra.io](mailto:hello@keelinfra.io), the person who answers is the person who will do
 the work. For the buyer we serve, that's not a limitation; it's the point:
 
 - **You talk to the engineer, not an account manager.**
-- **Everything is in the open** — the [code](https://github.com/keelinfra), the
-  [docs](/docs/keycloak/), the CI runs, the [claims ledger](/evidence/). At this size there's no process to hide behind, so we don't try.
-- **We say "you don't need us" when you don't.** Both products are complete without a
-  subscription or a service engagement — that's by design.
+- **Everything is in the open** — the [code](https://github.com/keelinfra), the CI runs, the
+  [claims ledger](/evidence/). At this size there's no process to hide behind, so we don't try.
+- **We say "you don't need us" when you don't.** The tools are complete without a support
+  plan or a service engagement — that's by design.
 - **If keelinfra stopped tomorrow, nothing you run would stop.** The code runs on your own machines,
   and it is open source down to the build scripts
-  ([Keycloak builds](https://github.com/keelinfra/keycloak/blob/main/lts/build-from-tag.sh),
-  [Agent8](https://github.com/keelinfra/agent8/blob/main/build.sh)), so you can keep it going
+  ([Agent8](https://github.com/keelinfra/agent8/blob/main/build.sh)), so you can keep it going
   yourself.
 
 ## Who builds it
@@ -48,11 +48,11 @@ Xianpeng Shen maintains open-source tools for building and shipping software:
 
 1. **Proven, not promised.** No claim ships without a public CI run, a published measurement, or
    a drill you can run yourself.
-2. **The ops knowledge is the product** — and it's open source (Keycloak distribution:
-   Apache-2.0; Agent8: MIT). No open-core split, no gated features, no relicense rug-pull.
+2. **The ops knowledge is the product** — and it's open source (Agent8: MIT;
+   jenkins-upgrade-check: Apache-2.0). No open-core split, no gated features, no relicense rug-pull.
 3. **Your machines, your data.** Nothing phones home to us. There is nothing of yours for us to lose.
 
 ## Contact
 
 [hello@keelinfra.io](mailto:hello@keelinfra.io) · EU business hours · invoices on request ·
-[Keycloak pricing →](/keycloak/pricing/) · [Agent8 pricing →](/jenkins/pricing/)
+[Agent8 pricing →](/jenkins/pricing/)

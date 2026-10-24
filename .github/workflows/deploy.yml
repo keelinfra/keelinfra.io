@@ -3,10 +3,6 @@ name: deploy
 on:
   push:
     branches: [main]
-  schedule:
-    # After keelinfra/keycloak's nightly matrices (cron 01:47 and 03:17 UTC,
-    # often started late): refreshes the evidence page's last-seven-nights table.
-    - cron: "15 9 * * *"
   workflow_dispatch:
 
 permissions:
@@ -33,17 +29,6 @@ jobs:
           curl -sL "https://github.com/getzola/zola/releases/download/${ZOLA_VERSION}/zola-${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" -o zola.tar.gz
           echo "${ZOLA_SHA256}  zola.tar.gz" | sha256sum -c -
           tar xzf zola.tar.gz && sudo mv zola /usr/local/bin/ && zola --version
-
-      - name: Docs must match keelinfra/keycloak (no copy-drift, no hand-edits)
-        run: python3 scripts/sync_docs.py --check
-
-      - name: Demo CSS must match its generator (no hand-edits)
-        run: python3 scripts/gen_demo_css.py --check
-
-      - name: Nightly CI results for the evidence page (keeps the committed snapshot on failure)
-        run: python3 scripts/fetch_ci.py
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Build
         run: zola build
