@@ -7,8 +7,8 @@ zola build   # -> public/
 zola serve   # local preview at localhost:1111
 ```
 
-`content/docs/keycloak/` is synced from [keelinfra/keycloak](https://github.com/keelinfra/keycloak)
-by `scripts/sync_docs.py`. Don't hand-edit those files — CI checks for drift on every
-build; the fix always lands in the product repo, never here.
+The Keycloak distribution was discontinued on 2026-10-24. Its old pages (docs, pricing,
+compare, blog posts) are aliases of `content/keycloak.md`, the notice page, so links in the
+wild still land somewhere; `tests/inbound-urls.txt` keeps them checked.
 
 Deploys automatically on push to `main` via GitHub Actions → GitHub Pages.

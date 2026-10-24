@@ -29,8 +29,8 @@ works now:
   exploited by CISA KEV or ENISA's EU Vulnerability Database. The issue carries the Article 14
   checklist: early warning in 24 hours, notification in 72 hours, final report.
 
-We use it on our own [Keycloak distribution](/keycloak/): its release workflows record every
-release this way, and a daily job watches the ones still in support.
+Agent8's release workflow uses the same building blocks: a CycloneDX SBOM per jar and signed
+build-provenance and SBOM attestations on every release since 17 October 2026.
 
 ## In development: the hosted ledger
 

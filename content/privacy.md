@@ -1,10 +1,10 @@
 +++
 title = "Privacy"
-description = "What the keelinfra.io website collects and how to opt out. The Keycloak distribution itself collects nothing."
+description = "What the keelinfra.io website collects and how to opt out. The tools themselves collect nothing."
 template = "page.html"
 +++
 
-This page is about the **keelinfra.io website**. The Keycloak distribution sends nothing to us
+This page is about the **keelinfra.io website**. Agent8 sends nothing to us
 (see [Security](/security/)).
 
 **Analytics.** We use Google Analytics to see which pages are read and how people find them:

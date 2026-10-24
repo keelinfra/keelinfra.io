@@ -19,34 +19,9 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Products</h2>
-      <span class="aside">2 products · both free and open source</span>
+      <span class="aside">for Jenkins · free and open source</span>
     </div>
     <div class="products">
-      <article class="product">
-        <div class="product-id">
-          <div class="tile"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#e8a33d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 20 3M16 7l3 3M14 9l2 2"/></svg></div>
-          <div>
-            <h3>Keycloak distribution</h3>
-            <div class="repo">keelinfra/keycloak · Apache-2.0</div>
-          </div>
-        </div>
-        <div class="chips">
-          <span class="chip ok">Available</span>
-          <span class="chip">Paid support available</span>
-        </div>
-        <p class="pitch">A highly available Keycloak cluster on your own VMs, with every supported
-        upgrade path re-proven in public CI each night.</p>
-        <ul class="checks">
-          <li>3-node cluster with PostgreSQL failover</li>
-          <li>Encrypted backups with point-in-time restore</li>
-          <li>Rolling upgrades, measured and repeatable</li>
-        </ul>
-        <div class="actions">
-          <a class="btn btn-primary" href="/keycloak/">Explore Keycloak</a>
-          <a class="btn btn-ghost" href="/docs/keycloak/">Docs</a>
-          <a class="btn btn-ghost" href="/keycloak/pricing/">Pricing</a>
-        </div>
-      </article>
       <article class="product">
         <div class="product-id">
           <div class="tile" aria-hidden="true">8</div>
@@ -73,9 +48,31 @@
           <a class="btn btn-ghost" href="/jenkins-assessment/">Get help</a>
         </div>
       </article>
+      <article class="product">
+        <div class="product-id">
+          <div class="tile" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8a33d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+          <div>
+            <h3>Jenkins upgrade matrix</h3>
+            <div class="repo">keelinfra/jenkins-upgrade-check · Apache-2.0</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip ok">Published</span>
+          <span class="chip">Free</span>
+        </div>
+        <p class="pitch">Which Jenkins LTS lines can go straight to 2.580.1, and which need to stop on
+        the way, from 328 rehearsed starts.</p>
+        <ul class="checks">
+          <li>38 LTS lines, from 2.60.3 to 2.568.3</li>
+          <li>The 100 and the 300 most installed plugins</li>
+          <li>Core-only and stepped upgrades, with the Java for each step</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-primary" href="/jenkins/upgrade-matrix/">See the matrix</a>
+          <a class="btn btn-ghost" href="/jenkins/upgrade-check/">Check your own plugins</a>
+        </div>
+      </article>
     </div>
-    <p class="products-note">Upgrading an old Jenkins controller? <a href="/jenkins/upgrade-matrix/">The upgrade matrix</a>
-    shows which LTS lines can go straight to 2.580.1 and which need to stop on the way, from 328 rehearsed starts.</p>
   </div>
 </section>
 
@@ -102,21 +99,13 @@
         with a written runbook.</p>
       </div>
     </div>
-<pre class="term" style="margin-top:44px"><span class="p">$</span> ./verify --drill failover   <span class="c"># keycloak: switch the PostgreSQL leader, write through it</span>
-<span class="p">$</span> sh install.sh --url https://jenkins.example.com/ --replace agent.jar   <span class="c"># agent8</span></pre>
+<pre class="term" style="margin-top:44px"><span class="p">$</span> sh install.sh --url https://jenkins.example.com/ --replace agent.jar   <span class="c"># agent8</span></pre>
   </div>
 </section>
 
 <section id="services">
   <div class="wrap">
     <div class="help-cards" id="pricing">
-      <div class="help-card">
-        <div class="kicker">Keycloak services</div>
-        <h3>Upgrade drills, HA hardening, migrations</h3>
-        <p>Fixed-scope engagements from $3,000, and a self-hosted subscription from $4,500 per
-        production cluster per year.</p>
-        <a class="textlink" href="/keycloak/pricing/">Keycloak pricing →</a>
-      </div>
       <div class="help-card">
         <div class="kicker">Agent8 help</div>
         <h3>AIX, Solaris and HP-UX pilots, plugin checks, fleets</h3>
@@ -140,7 +129,7 @@
     <div class="post-cards">
       {% for post in blog.pages %}{% if loop.index <= 3 %}
       <a href="{{ post.permalink | safe }}">
-        <div class="meta">{% if post.title is containing(pat="Jenkins") %}<span class="tag agent8">Agent8</span>{% elif post.title is containing(pat="Keycloak") %}<span class="tag">Keycloak</span>{% endif %}{{ post.date | date(format="%Y-%m-%d") }}</div>
+        <div class="meta">{% if post.title is containing(pat="Jenkins") %}<span class="tag agent8">Agent8</span>{% endif %}{{ post.date | date(format="%Y-%m-%d") }}</div>
         <h3>{{ post.title }}</h3>
       </a>
       {% endif %}{% endfor %}
