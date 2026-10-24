@@ -108,8 +108,7 @@
     <div class="nav-products">
       <span class="label">Products</span>
       <a href="/keycloak/"{% if current is starting_with(pat="/keycloak/") %} aria-current="page"{% endif %}>Keycloak</a>
-      <a href="/jenkins/"{% if current is starting_with(pat="/jenkins-assessment/") or (current is starting_with(pat="/jenkins/") and current is not starting_with(pat="/jenkins/upgrade-")) %} aria-current="page"{% endif %}>Agent8 for Jenkins</a>
-      <a href="/jenkins/upgrade-check/"{% if current is starting_with(pat="/jenkins/upgrade-") %} aria-current="page"{% endif %}>Jenkins upgrade check</a>
+      <a href="/jenkins/"{% if current is starting_with(pat="/jenkins-assessment/") or current is starting_with(pat="/jenkins/") %} aria-current="page"{% endif %}>Agent8 for Jenkins</a>
     </div>
     <div class="nav-links">
       <a href="/docs/keycloak/"{% if current is starting_with(pat="/docs/") %} aria-current="page"{% endif %}>Docs</a>
@@ -123,7 +122,6 @@
         <span class="label">Products</span>
         <a href="/keycloak/">Keycloak</a>
         <a href="/jenkins/">Agent8 for Jenkins</a>
-        <a href="/jenkins/upgrade-check/">Jenkins upgrade check</a>
         <span class="label">keelinfra</span>
         <a href="/docs/keycloak/">Docs</a>
         <a href="/evidence/">Evidence</a>
@@ -158,8 +156,8 @@
         <a href="/jenkins/">Agent8</a>
         <a href="https://github.com/keelinfra/agent8">Agent8 on GitHub</a>
         <a href="/jenkins/pricing/">Agent8 pricing</a>
-        <a href="/jenkins/upgrade-check/">Upgrade check</a>
         <a href="/jenkins/upgrade-matrix/">Upgrade matrix</a>
+        <a href="/jenkins/upgrade-check/">Upgrade check CLI</a>
         <a href="/jenkins-assessment/">Get help</a>
       </div>
       <div class="f-col">

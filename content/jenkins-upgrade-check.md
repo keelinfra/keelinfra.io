@@ -8,6 +8,11 @@ template = "page.html"
 subtitle = "Free and open source (Apache-2.0) · one static binary · the rehearsal needs Docker"
 +++
 
+Most upgrades only need the answer in the [upgrade matrix](/jenkins/upgrade-matrix/): which LTS
+lines can go straight to 2.580.1, which stops the others need, and the Java for each, with the
+data as JSON that you or an AI agent can follow. jenkins-upgrade-check is the tool that made
+it; use it when you want the same rehearsal for your own plugin list and configuration.
+
 **For the people who run a Jenkins controller and have put off upgrading it.**
 jenkins-upgrade-check works out the path to the version you want, rehearses it on a copy of
 your controller, and after the real upgrade says GO or ROLL BACK, and why. Nothing is installed
