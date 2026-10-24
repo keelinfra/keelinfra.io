@@ -280,6 +280,7 @@ footer .legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
 .product h3{font-size:22px;letter-spacing:-.015em;line-height:1.25}
 .product .pitch{font-size:18px;line-height:1.5;font-weight:500}
 .product .actions{margin-top:auto;padding-top:8px;display:flex;gap:10px;flex-wrap:wrap}
+.products-note{margin-top:20px;font-size:15px;color:var(--body)}
 .checks{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px;color:var(--body)}
 .checks li{display:flex;gap:10px}
 .checks li::before{content:"";flex-shrink:0;width:18px;height:18px;margin-top:3px;background:var(--ok);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/contain no-repeat}

@@ -142,6 +142,21 @@ steps. The lines before it:
 - 2.361.4 to 2.387.3 have `blueocean-rest-impl` loading partly before the upgrade too.
 - Usage shares are from March 2026, so 2.555.3 and 2.568.3 show none.
 
+## Use the data
+
+The rows behind both tables are published as JSON:
+[matrix.json](https://raw.githubusercontent.com/keelinfra/jenkins-upgrade-check/matrix/2.580.1/matrix.json),
+one row per starting line and plugin count (76 rows). Each row has the starting `core`, the
+result of replacing only the core (`asIs`), and the `stops` of the tested path in order, each
+with its `core` and the `java` it ran on.
+
+If an AI agent is upgrading your controller, give it that file. Ask it to take the row for your
+LTS line and to go through its `stops` in order: switch the controller and every agent to the
+stop's `java`, upgrade the core to the stop's `core`, and update every plugin before going on
+to the next stop. Use `java`, not `planJava`: `java` is what the rehearsal needed, and it is
+newer where a plugin required it: from 2.150.3 or older, the gradle plugin needs Java 11 at the
+2.346.3 stop, where the plan alone says Java 8.
+
 ## Your own plugin list
 
 Run this in *Manage Jenkins → Script Console* and send the output to
