@@ -5,6 +5,7 @@ path = "jenkins/upgrade-check"
 template = "page.html"
 
 [extra]
+og_image = "/assets/social-preview-jenkins-upgrade-check.png"
 subtitle = "Free and open source (Apache-2.0) · one static binary · the rehearsal needs Docker"
 +++
 

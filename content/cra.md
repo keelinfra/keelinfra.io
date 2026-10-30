@@ -4,6 +4,7 @@ description = "EU Cyber Resilience Act evidence for every release, and an alert 
 template = "waitlist.html"
 
 [extra]
+og_image = "/assets/social-preview-release-ledger.png"
 subtitle = "Free GitHub Action today · hosted service in development · waitlist open"
 +++
 

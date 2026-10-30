@@ -5,6 +5,7 @@ path = "jenkins/upgrade-matrix"
 template = "page.html"
 
 [extra]
+og_image = "/assets/social-preview-jenkins-upgrade-check.png"
 subtitle = "Rehearsed 2026-10-21 · 38 LTS lines · 100 and 300 plugins · 328 Jenkins starts"
 +++
 
