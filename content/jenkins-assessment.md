@@ -29,4 +29,6 @@ every host you have can run a normal agent, that is what we will tell you. The b
 [Jenkins requires Java 21. What happens to your AIX 7.1 and RHEL 6 build hosts?](/blog/jenkins-java-21-aix-rhel6-build-hosts/)
 
 Leave out hostnames, IP addresses, credentials and anything else you would not put in an
-email to a stranger. Operating system versions and what each host builds are enough.
+email to a stranger.
+
+Paid support has fixed prices, listed on the [pricing page](/jenkins/pricing/). Operating system versions and what each host builds are enough.
