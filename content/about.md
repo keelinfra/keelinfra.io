@@ -1,6 +1,6 @@
 +++
 title = "About"
-description = "keelinfra is built by Xianpeng Shen, the engineer who answers your email — EU-based, shipping open-source tools for Jenkins with every claim proven in public."
+description = "keelinfra is built by Xianpeng Shen, the engineer who answers your email — EU-based, shipping open-source tools for Jenkins with the tests behind each claim published."
 template = "page.html"
 +++
 
@@ -46,8 +46,9 @@ Xianpeng Shen maintains open-source tools for building and shipping software:
 
 ## The operating principles
 
-1. **Proven, not promised.** No claim ships without a public CI run, a published measurement, or
-   a drill you can run yourself.
+1. **Tested, not promised.** No claim ships without a test behind it: a public CI run, a
+   published measurement, or a drill you can run yourself. Where a platform is tested by hand
+   and not in CI (AIX, Solaris, HP-UX), the page says so.
 2. **The ops knowledge is the product** — and it's open source (Agent8: MIT;
    jenkins-upgrade-check: Apache-2.0). No open-core split, no gated features, no relicense rug-pull.
 3. **Your machines, your data.** Nothing phones home to us. There is nothing of yours for us to lose.

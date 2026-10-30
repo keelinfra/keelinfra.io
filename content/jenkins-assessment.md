@@ -16,9 +16,9 @@ Write to us when that is not enough:
 - **Your hosts run AIX, Solaris or HP-UX.** Agent8 has been tested on AIX, Solaris and HP-UX. We run it
   with you on your platform as a pilot, and fix what breaks.
 - **You need to know whether your plugins work.** Plugins that run their own code on agents
-  are the main open risk on a Java 8 agent. CI tests Git checkout (JGit) and credentials
-  binding; others, such as Maven, Docker or command-line git, still need testing. We check the
-  ones your builds use.
+  are the main open risk on a Java 8 agent. CI tests Git checkout (JGit and command-line git)
+  and credentials binding; others, such as Docker or artifact upload steps, still need testing.
+  We check the ones your builds use.
 - **You have many hosts, or you need support you can put in a contract.**
 - **You are not sure which path each host needs.** Some can run a normal Java 21 agent, some
   builds can move into a container, and the rest need agent8.

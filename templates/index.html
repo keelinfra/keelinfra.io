@@ -3,11 +3,11 @@
 {% block content %}
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">open source · proven in public CI · help when you need it</div>
+    <div class="eyebrow">open source · tested in public · help when you need it</div>
     <h1 style="margin-top:18px;max-width:18ch">Infrastructure you have to run yourself, kept <em>current</em>.</h1>
     <p class="sub">Regulation, air gaps and hardware that isn't going anywhere keep a lot of systems
     off the cloud and off the upgrade path. keelinfra builds open-source tools that keep them
-    supported, and every claim links to a CI run you can check yourself.</p>
+    supported, and publishes the CI runs and test data behind what it says.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#product">See the products</a>
       <a class="btn btn-ghost" href="/evidence/">Read the evidence</a>
@@ -88,7 +88,7 @@
         <p class="pitch">GitLab Runner for AIX 7.2 and 7.3, which GitLab doesn't ship.</p>
         <ul class="checks">
           <li>The unmodified upstream runner, with four small dependency patches</li>
-          <li>Rebuilt from each upstream release, checked daily in CI</li>
+          <li>The latest upstream release built daily in CI; releases published by hand</li>
           <li>Shell executor tested: jobs, artifacts, cache, git clone, cancel</li>
         </ul>
         <div class="actions">
@@ -136,9 +136,10 @@
       </div>
       <div>
         <div class="num">02</div>
-        <h3>Proven in public CI</h3>
-        <p>Each claim on this site links to a CI run, a probe log or a drill you can repeat on your
-        own machines. <a href="/evidence/">The evidence ledger →</a></p>
+        <h3>Tested in public</h3>
+        <p>Linux, the upgrade rehearsals and the security backports are tested in public CI you can
+        check. AIX, Solaris and HP-UX are tested by hand, not in CI, and the pages say so.
+        <a href="/evidence/">The evidence ledger →</a></p>
       </div>
       <div>
         <div class="num">03</div>

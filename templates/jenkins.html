@@ -100,8 +100,8 @@
         <tr><td>Linux, including RHEL/CentOS 6</td><td class="mono">HotSpot 8</td><td><span class="chip ok">Tested in CI</span></td></tr>
         <tr><td>Linux, IBM Semeru (OpenJ9, the JVM family of IBM Java 8)</td><td class="mono">OpenJ9 8</td><td><span class="chip ok">Tested in CI · best effort</span></td></tr>
         <tr><td>Linux</td><td class="mono">HotSpot 11, 17</td><td><span class="chip ok">Tested in CI (LTS)</span></td></tr>
-        <tr><td>AIX 7.1 / 7.2</td><td class="mono">IBM Java 8</td><td><span class="chip ok">Tested</span></td></tr>
-        <tr><td>Solaris</td><td class="mono">Java 8, 11</td><td><span class="chip ok">Tested</span></td></tr>
+        <tr><td>AIX 7.1 / 7.2 / 7.3</td><td class="mono">IBM Java 8</td><td><span class="chip ok">Tested</span></td></tr>
+        <tr><td>Solaris</td><td class="mono">Java 8</td><td><span class="chip ok">Tested</span></td></tr>
         <tr><td>HP-UX (Itanium)</td><td class="mono">Java 8</td><td><span class="chip ok">Tested</span></td></tr>
       </tbody>
     </table>
@@ -202,9 +202,11 @@
         has to change on the way, is in the <a href="/jenkins/upgrade-matrix/">upgrade matrix</a>.</p>
       </div>
       <div>
-        <h3>What hasn't been tested yet?</h3>
-        <p>Plugins that run their own code on the agent beyond
-        Git checkout (JGit) and credentials, such as Maven or Docker; and the Maven project type.
+        <h3>What hasn't been tested yet, and what doesn't work?</h3>
+        <p>Plugins that run their own code on the agent beyond Git checkout (JGit and
+        command-line git) and credentials, such as Docker or artifact upload steps, are untested.
+        The Maven project type does not work: it starts its own JVM, which Agent8 does not reach.
+        Run Maven from a Pipeline or freestyle shell step (<code>sh 'mvn ...'</code>) instead.
         The <a href="https://github.com/keelinfra/agent8#known-gaps">README</a> keeps the
         list.</p>
       </div>
