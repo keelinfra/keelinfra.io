@@ -59,7 +59,7 @@
   {%- set m_og = page.extra.og_image | default(value=config.extra.og_image_default) %}
 {%- elif section %}
   {%- if section.path == "/" %}
-    {%- set m_title = "keelinfra — Self-hosted infrastructure, proven in public" %}
+    {%- set m_title = "keelinfra — Self-hosted infrastructure, tested in public" %}
   {%- else %}
     {%- set m_title = section.title ~ " — keelinfra" %}
   {%- endif %}

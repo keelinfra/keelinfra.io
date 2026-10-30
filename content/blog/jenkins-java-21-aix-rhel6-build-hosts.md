@@ -188,12 +188,13 @@ moving a whole fleet.
 Known gaps:
 
 - A newer JDK API that JvmDowngrader cannot stub fails only when that code runs. Git checkout
-  and credentials binding are tested; other plugins that run code on agents, such as Maven or
-  Docker, still need testing.
+  (JGit and command-line git) and credentials binding are tested; other plugins that run code
+  on agents, such as Docker, still need testing.
 - SSH agents work since October 2026: the SSH Build Agents plugin copies its own `remoting.jar`
   to the host on every launch, so set the node's *Java Path* to the `java` file `install.sh`
   writes, which runs Agent8 instead.
-- The Maven project type (maven-plugin), which starts its own agent JVM, is untested.
+- The Maven project type (maven-plugin) does not work: it starts its own agent JVM, which Agent8
+  does not reach. Run Maven from a Pipeline or freestyle shell step (`sh 'mvn ...'`) instead.
 
 ## Try it, or get help
 
@@ -201,8 +202,8 @@ Agent8 is free and open source. If you can try it yourself, start with the
 [README](https://github.com/keelinfra/agent8), and report anything that breaks as a
 [GitHub issue](https://github.com/keelinfra/agent8/issues).
 
-Write to us instead if your hosts run AIX, Solaris or HP-UX, where Agent8 has not been verified
-yet, if you need to know whether the plugins your builds use work on a Java 8 agent, or if you
+Write to us instead if your hosts run AIX, Solaris or HP-UX, where Agent8 is tested but not in
+CI, if you need to know whether the plugins your builds use work on a Java 8 agent, or if you
 want the rollout done with you rather than by you. The first answer is free: for each host, the
 highest Java it can run, which path above fits it, and what has and has not been verified for
 that platform.
