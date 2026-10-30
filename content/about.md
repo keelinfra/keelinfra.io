@@ -54,5 +54,4 @@ Xianpeng Shen maintains open-source tools for building and shipping software:
 
 ## Contact
 
-[hello@keelinfra.io](mailto:hello@keelinfra.io) · EU business hours · invoices on request ·
-[Agent8 pricing →](/jenkins/pricing/)
+[hello@keelinfra.io](mailto:hello@keelinfra.io) · EU business hours
