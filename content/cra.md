@@ -47,8 +47,7 @@ for when that is not enough:
   still there if a repository is deleted.
 - **One page of support periods**: which versions are still supported, until when.
 
-Planned price: about €49 per product per month, through GitHub Marketplace. The first pilots
-come from the waitlist.
+The first pilots come from the waitlist.
 
 It will not make you compliant or replace your own assessment. It keeps the evidence and tells
 you when to look.

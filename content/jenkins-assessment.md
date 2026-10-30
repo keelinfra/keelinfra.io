@@ -16,10 +16,10 @@ Write to us when that is not enough:
 - **Your hosts run AIX, Solaris or HP-UX.** Agent8 has been tested on AIX, Solaris and HP-UX. We run it
   with you on your platform as a pilot, and fix what breaks.
 - **You need to know whether your plugins work.** Plugins that run their own code on agents
-  are the main open risk on a Java 8 agent. CI tests Git checkout (JGit and command-line git)
-  and credentials binding; others, such as Docker or artifact upload steps, still need testing.
-  We check the ones your builds use.
-- **You have many hosts, or you need support you can put in a contract.**
+  are the main open risk on a Java 8 agent. CI tests Git checkout (JGit) and credentials
+  binding; others, such as Maven, Docker or command-line git, still need testing. We check the
+  ones your builds use.
+- **You have many hosts, or you need longer-term support.**
 - **You are not sure which path each host needs.** Some can run a normal Java 21 agent, some
   builds can move into a container, and the rest need agent8.
 
@@ -28,8 +28,7 @@ vendor source for it, the path that fits, and what we have not verified for your
 every host you have can run a normal agent, that is what we will tell you. The background is in
 [Jenkins requires Java 21. What happens to your AIX 7.1 and RHEL 6 build hosts?](/blog/jenkins-java-21-aix-rhel6-build-hosts/)
 
-Pilots, plugin checks and yearly support have fixed prices, listed on the
-[pricing page](/jenkins/pricing/).
-
 Leave out hostnames, IP addresses, credentials and anything else you would not put in an
-email to a stranger. Operating system versions and what each host builds are enough.
+email to a stranger.
+
+Paid support has fixed prices, listed on the [pricing page](/jenkins/pricing/). Operating system versions and what each host builds are enough.
