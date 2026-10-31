@@ -1,6 +1,6 @@
 +++
 title = "Blog"
-description = "Measured, not promised: probe logs, drills, and the numbers behind keeping Jenkins and its build hosts current."
+description = "Measured, not promised: probe logs, drills, and the numbers behind keeping CI that can't upgrade yet running."
 sort_by = "date"
 template = "blog.html"
 page_template = "blog-page.html"

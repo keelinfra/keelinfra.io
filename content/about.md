@@ -4,10 +4,14 @@ description = "keelinfra is built by Xianpeng Shen, the engineer who answers you
 template = "page.html"
 +++
 
-keelinfra builds open-source tools that keep Jenkins and the machines around it current:
+keelinfra ships tested, open-source builds for CI that can't upgrade yet, until it can:
 [Agent8 for Jenkins](/jenkins/), which keeps build hosts stuck on Java 8, 11 or 17 connected to a
-current Jenkins controller, and the [Jenkins upgrade matrix](/jenkins/upgrade-matrix/), which shows
-how an old controller gets to the current LTS. (An earlier Keycloak distribution was
+current Jenkins controller;
+[Extended Security for Jenkins](https://github.com/keelinfra/jenkins-extended-security), which
+backports core security fixes to 2.541.x for controllers that can't leave Java 17 yet;
+[AIX Runner for GitLab](https://github.com/keelinfra/aix-runner), a GitLab Runner build for AIX;
+and the [Jenkins upgrade matrix](/jenkins/upgrade-matrix/), which shows how an old controller gets to
+the current LTS. (An earlier Keycloak distribution was
 [discontinued](/keycloak/) in October 2026.)
 
 ## Deliberately small
