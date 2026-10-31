@@ -31,3 +31,4 @@
 /jenkins/upgrade-check/
 /blog/keycloak-critical-fix-no-release/
 /blog/keycloak-26-7-3-cve-triage/
+/jenkins/upgrade-matrix/2.580.1/
