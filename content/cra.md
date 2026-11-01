@@ -5,7 +5,7 @@ template = "waitlist.html"
 
 [extra]
 og_image = "/assets/social-preview-release-ledger.png"
-subtitle = "Free GitHub Action today · hosted service in development · waitlist open"
+subtitle = "Free GitHub Action today · hosted service planned · waitlist open"
 +++
 
 Since 11 September 2026, a manufacturer selling software in the EU has to warn ENISA within
@@ -33,10 +33,10 @@ works now:
 Agent8's release workflow uses the same building blocks: a CycloneDX SBOM per jar and signed
 build-provenance and SBOM attestations on every release since 17 October 2026.
 
-## In development: the hosted ledger
+## Planned: the hosted ledger
 
-The Action lives in your repository and tells you when a workflow fails. The hosted service is
-for when that is not enough:
+The Action lives in your repository and tells you when a workflow fails. The planned hosted
+service is for when that is not enough:
 
 - **Every version you shipped, watched for its whole support period**, with alerts by email,
   not only a red workflow.
