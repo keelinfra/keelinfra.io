@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% block htmltitle %}<title>Page not found — keelinfra</title>{% endblock %}
+{% block site_meta %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="This page does not exist.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="{{ config.theme.favicon | url }}">
+{% endblock %}
+{% block layout %}
+<main class="sumi-shell sumi-shell--no-side sumi-shell--no-toc" id="content">
+  <div class="sumi-404">
+    <div>
+      <div class="sumi-404-code">404</div>
+      <h1>This page doesn't exist</h1>
+      <p>Useful places instead:</p>
+      <p>
+        <a class="sumi-btn sumi-btn--primary" href="{{ base_url.rstrip('/') }}/">Home</a>
+        <a class="sumi-btn" href="{{ base_url.rstrip('/') }}/jenkins/">Agent8 for Jenkins</a>
+        <a class="sumi-btn" href="{{ base_url.rstrip('/') }}/jenkins/upgrade-matrix/">Jenkins upgrade matrix</a>
+        <a class="sumi-btn" href="{{ base_url.rstrip('/') }}/blog/">Blog</a>
+      </p>
+    </div>
+  </div>
+</main>
+<script>
+  // GitHub Pages serves this page at the missing URL, so the path is the
+  // broken link and the referrer says who links to it.
+  if (typeof gtag === 'function') {
+    gtag('event', 'page_not_found', {
+      page_path: location.pathname + location.search,
+      referrer: document.referrer || '(none)'
+    });
+  }
+</script>
+{% endblock %}

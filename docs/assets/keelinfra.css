@@ -1,0 +1,92 @@
+/* keelinfra on Sumi: the brand (IBM Plex, navy and amber) on top of the stock
+   theme, plus the few page parts Sumi doesn't have. Sizes are Sumi's own. */
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/plex-sans-400.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/plex-sans-500.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/plex-sans-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:700;font-display:swap;src:url("../fonts/plex-sans-700.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/plex-mono-400.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/plex-mono-500.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/plex-mono-600.woff2") format("woff2")}
+
+:root {
+  --ki-navy: #0b2239;
+  --ki-amber: #e8a33d;
+  --sumi-font: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --sumi-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --sumi-accent: #9a5b06;
+  --sumi-bg: #f6f7f9;
+  --sumi-bg-elev: #ffffff;
+  --sumi-bg-soft: #eef1f5;
+  --sumi-bg-sunken: #e2e7ed;
+  --sumi-fg: #0f1c2a;
+  --sumi-fg-2: #3b4a59;
+  --sumi-fg-3: #556574;
+  --sumi-line: #e2e7ed;
+  --sumi-line-2: #cdd5de;
+  --sumi-link: #9a5b06;
+  --sumi-link-hover: #7a4705;
+  --sumi-header-bg: rgba(246, 247, 249, 0.86);
+  --sumi-code-head: #eef1f5;
+  --sumi-band-bg: var(--ki-navy);
+  --sumi-band-bg-dark: var(--ki-navy);
+  --sumi-content-w: 47.5rem;
+}
+[data-theme="dark"] {
+  --sumi-accent: #e8a33d;
+  --sumi-bg: #0c141d;
+  --sumi-bg-elev: #121e2a;
+  --sumi-bg-soft: #172533;
+  --sumi-bg-sunken: #09111a;
+  --sumi-fg: #e4ecf3;
+  --sumi-fg-2: #c3d0dc;
+  --sumi-fg-3: #8fa1b3;
+  --sumi-line: #22303e;
+  --sumi-line-2: #33465a;
+  --sumi-link: #e8a33d;
+  --sumi-link-hover: #f3c27a;
+  --sumi-header-bg: rgba(12, 20, 29, 0.86);
+  --sumi-code-bg: #0a1520;
+  --sumi-code-head: #101c28;
+}
+
+/* The navy tile with the amber mark, as in the logo. */
+.sumi-feature-icon, .ki-tile { background: var(--ki-navy); color: var(--ki-amber); }
+.sumi-land--dark .sumi-feature-icon { background: rgba(255, 255, 255, .08); }
+.sumi-hero-title em { color: var(--sumi-accent); }
+
+/* Product page hero: the repository line above the name. */
+.ki-product-id { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; color: var(--sumi-fg-3); font: 400 13px var(--sumi-font-mono); }
+.ki-tile { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 9px; font: 600 22px/1 var(--sumi-font-mono); }
+
+/* The how-it-works animation: one picture per palette. */
+.ki-how { margin: 0; }
+.ki-how img { display: block; width: 100%; height: auto; border: 1px solid var(--sumi-line); border-radius: 14px; background: var(--sumi-bg-elev); }
+[data-theme="dark"] .ki-how .ki-light, [data-theme="light"] .ki-how .ki-dark { display: none; }
+
+/* Status tables: a coloured dot for "tested". */
+.sumi-prose table .badge.tip::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: currentColor; vertical-align: .08em; }
+.sumi-prose .ki-ci-badges { display: flex; flex-wrap: wrap; gap: 12px; }
+.sumi-prose .ki-ci-badges img { height: 20px; margin: 0; border: 0; border-radius: 0; }
+
+/* "or email hello@keelinfra.io [Copy]" under each mailto button, for
+   visitors whose mailto: links open nothing (keelinfra.js fills it in). */
+.ki-mail-alt { margin: 8px 0 0; color: var(--sumi-fg-3); font-size: 13px; }
+.ki-copy-mail { margin-left: 4px; padding: 0 8px; border: 1px solid var(--sumi-line-2); border-radius: 6px; background: transparent; color: var(--sumi-fg); font: 600 12px/1.6 var(--sumi-font); cursor: pointer; }
+.ki-copy-mail:hover { border-color: var(--sumi-fg-3); }
+.sumi-price .ki-mail-alt { margin-top: 10px; }
+.sumi-cta .ki-mail-alt { color: color-mix(in srgb, var(--sumi-bg) 70%, transparent); }
+
+/* Agent8 page: the proof strip under the hero has words, not numbers. */
+#proof { padding: 40px 0; }
+#proof .sumi-stats dd { font-size: 1.45rem; letter-spacing: -0.02em; }
+#how .sumi-land-md { max-width: none; }
+#errors pre { white-space: pre-wrap; }
+.sumi-prose ul.ki-checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 16px; padding: 0; list-style: none; }
+.sumi-prose ul.ki-checks li { margin: 0; padding: 12px 14px 12px 40px; border: 1px solid var(--sumi-line); border-radius: 10px; background: var(--sumi-bg-elev); position: relative; }
+.sumi-prose ul.ki-checks li::before { content: "✓"; position: absolute; left: 15px; color: var(--sumi-accent); font-weight: 700; }
+@media (max-width: 720px) { .sumi-prose ul.ki-checks { grid-template-columns: minmax(0, 1fr); } }
+#support td code { white-space: nowrap; }
+
+/* The upgrade matrix (layout: wide): text keeps its measure, the tables get the room. */
+html[data-layout="wide"] .sumi-article { max-width: 1120px; margin-inline: auto; }
+html[data-layout="wide"] :is(.sumi-article-top, .sumi-content > :not(.sumi-table)) { max-width: var(--sumi-content-w); margin-inline: auto; }

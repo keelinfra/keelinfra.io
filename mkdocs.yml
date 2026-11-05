@@ -1,0 +1,105 @@
+site_name: keelinfra
+site_url: https://keelinfra.io/
+site_description: >-
+  Tested, open-source builds for CI that can't upgrade yet: Agent8, Extended Security for Jenkins
+  2.541.x, AIX Runner for GitLab, and the Jenkins upgrade matrix.
+site_author: keelinfra
+repo_url: https://github.com/keelinfra
+repo_name: keelinfra on GitHub
+edit_uri: ""
+copyright: >-
+  © 2026 keelinfra. Agent8: MIT, with LGPL-2.1 JvmDowngrader classes in its jars.
+  jenkins-upgrade-check: Apache-2.0. aix-runner: MIT, based on GitLab software.
+  jenkins-extended-security: MIT, with BSD-2-Clause Stapler patches; based on Jenkins software.
+  Jenkins® is a registered trademark of LF Charities Inc. GitLab is a trademark of GitLab Inc.
+  keelinfra is an independent project and is not affiliated with or endorsed by the Jenkins
+  project or GitLab Inc., and has no connection to Keel Infrastructure Corp. (Nasdaq: KEEL).
+
+theme:
+  name: sumi
+  custom_dir: overrides
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  social_image: assets/social-preview.png
+  # The keelinfra amber; keelinfra.css sets the dark-mode shade and the navy.
+  accent: "#9a5b06"
+  # A product site: header tabs, no sidebar, no "on this page" rail.
+  hide: [sidebar, toc, breadcrumbs, pager]
+  keyboard: false
+  footer_links:
+    - title: keelinfra
+      links:
+        - {text: hello@keelinfra.io, link: "mailto:hello@keelinfra.io"}
+        - Based in the EU
+    - title: Jenkins
+      links:
+        - {text: Agent8, link: jenkins/}
+        - {text: Agent8 on GitHub, link: "https://github.com/keelinfra/agent8"}
+        - {text: Upgrade matrix, link: jenkins/upgrade-matrix/}
+        - {text: Upgrade check CLI, link: jenkins/upgrade-check/}
+        - {text: Get help, link: jenkins-assessment/}
+    - title: Company
+      links:
+        - {text: Evidence, link: evidence/}
+        - {text: Blog, link: blog/}
+        - {text: Security, link: security/}
+        - {text: CRA Release Ledger, link: cra/}
+        - {text: Privacy, link: privacy/}
+        - {text: About, link: about/}
+
+nav:
+  - Home: index.md
+  - Agent8 for Jenkins:
+      - jenkins/index.md
+      - jenkins/pricing.md
+      - jenkins-assessment.md
+  - Upgrade matrix:
+      - jenkins/upgrade-matrix/index.md
+      - jenkins/upgrade-check.md
+      - jenkins/upgrade-matrix/2.580.1.md
+  - Evidence: evidence.md
+  - Blog: blog/index.md
+
+not_in_nav: |
+  /about.md
+  /security.md
+  /privacy.md
+  /cra.md
+  /keycloak.md
+
+# Served as-is: the security.txt contact and the Cloudflare Pages / GitHub Pages files.
+exclude_docs: |
+  !.well-known/
+  !.nojekyll
+
+extra_css:
+  - assets/keelinfra.css
+extra_javascript:
+  - assets/keelinfra.js
+
+extra:
+  email: hello@keelinfra.io
+  # Google Analytics 4 measurement ID (property "keelinfra.io"). Empty disables the tag.
+  ga_measurement_id: G-1MWBKHTZMP
+
+markdown_extensions:
+  - toc:
+      permalink: "#"
+
+plugins:
+  - search
+  - sumi:
+      blog:
+        feed_items: 20
+      # One page of the whole site is for manuals, not a product site.
+      print:
+        enabled: false
+
+hooks:
+  - hooks/keelinfra.py
+
+validation:
+  links:
+    absolute_links: warn
+    unrecognized_links: warn
+    anchors: warn

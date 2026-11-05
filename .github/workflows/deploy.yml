@@ -3,18 +3,16 @@ name: deploy
 on:
   push:
     branches: [main]
+  # Pull requests run the build and every check; only main deploys.
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
-
-env:
-  ZOLA_VERSION: v0.23.4
-  ZOLA_SHA256: 54d1a347781b2f32330914fcc02def81c7e3ddb6111b36d1cc89c06557aed1de
 
 jobs:
   build:
@@ -24,31 +22,33 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install Zola (pinned, checksum-verified)
-        run: |
-          curl -sL "https://github.com/getzola/zola/releases/download/${ZOLA_VERSION}/zola-${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" -o zola.tar.gz
-          echo "${ZOLA_SHA256}  zola.tar.gz" | sha256sum -c -
-          tar xzf zola.tar.gz && sudo mv zola /usr/local/bin/ && zola --version
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        with:
+          python-version: "3.13"
+
+      - name: Install MkDocs NG and Sumi (pinned in requirements.txt)
+        run: pip install -r requirements.txt
 
       - name: Build
-        run: zola build
+        run: mkdocs build --strict
 
       - name: Internal links, anchors, inbound-URL contract, external-request budget
-        run: python3 scripts/check_site.py public
+        run: python3 scripts/check_site.py site
 
       - name: HTML validation
         run: |
           pipx install html5validator==0.4.2
-          html5validator --root public/ --also-check-svg --log INFO
+          html5validator --root site/ --also-check-svg --log INFO
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9  # v5.0.0
         with:
-          path: public/
+          path: site/
 
   # Only this job can publish to Pages; the build job, which runs scripts and
-  # third-party tools (zola, html5validator), has a read-only token.
+  # third-party tools (mkdocs, html5validator), has a read-only token.
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     permissions:
       pages: write

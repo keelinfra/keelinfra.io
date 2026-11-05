@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Post-build checks for the built site in public/.
+"""Post-build checks for the built site in site/.
 
-1. Internal links: every href/src starting with "/" resolves to a built file.
+1. Internal links: every href/src, root-relative ("/x/") or relative to its
+   page ("../x/"), resolves to a built file.
 2. Fragments: every internal link with #fragment points at an existing id.
 3. Inbound contract: every URL in tests/inbound-urls.txt exists (paths other
    repos, READMEs and mailtos depend on — breaking one breaks links in the wild).
@@ -11,13 +12,13 @@
    the Google Analytics tag (disclosed on /privacy/). External images are
    allowed only from github.com (live CI badges are evidence).
 
-Usage: scripts/check_site.py [public_dir]
+Usage: scripts/check_site.py [site_dir]
 """
-import os, re, sys
+import os, posixpath, re, sys
 from html.parser import HTMLParser
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PUBLIC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(SITE, "public")
+PUBLIC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(SITE, "site")
 CONTRACT = os.path.join(SITE, "tests", "inbound-urls.txt")
 OWN_HOSTS = ("https://keelinfra.io", "http://keelinfra.io")
 IMG_ALLOWED_EXTERNAL = ("https://github.com/",)
@@ -32,7 +33,7 @@ class Scan(HTMLParser):
         self.ids = set()
         self.links = []      # (attr, value)
         self.external = []   # (tag, url)
-        self.redirect = None # target path of a Zola alias page
+        self.redirect = None # target path of an alias page
 
 
     def handle_starttag(self, tag, attrs):
@@ -118,11 +119,18 @@ def main():
                     errors.append(f"{rel}: missing local anchor #{frag}")
                 continue
             if not target.startswith("/"):
-                errors.append(f"{rel}: non-root-relative internal link: {link}")
-                continue
+                # Relative to the page: MkDocs writes links that way, so the
+                # site also works from a preview folder.
+                base = "/" + posixpath.dirname(rel.replace(os.sep, "/"))
+                joined = posixpath.normpath(posixpath.join(base, target.split("?")[0]))
+                target = joined + ("/" if target.endswith("/") or target in (".", "./") else "")
+                target = target.replace("//", "/")
             tf = path_to_file(target)
             if not os.path.isfile(tf):
                 errors.append(f"{rel}: broken internal link: {link}")
+                continue
+            if frag and frag.startswith("tag="):
+                # The blog's tag filter (blog/#tag=Agent8) is read by script.
                 continue
             if frag:
                 tscan = pages.get(follow(pages, tf))
