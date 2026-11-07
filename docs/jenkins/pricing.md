@@ -27,7 +27,8 @@ sections:
           [How Agent8 works →](index.md)
         actions:
           - {text: View on GitHub, link: "https://github.com/keelinfra/agent8"}
-  - type: pricing
+  - type: include
+    template: partials/pricing.html
     id: services
     eyebrow: One-off
     title: Find out before you roll out
@@ -55,7 +56,8 @@ sections:
           - Written report and a rollout runbook for the rest of the fleet
         actions:
           - {text: Plan a pilot, link: "mailto:hello@keelinfra.io?subject=Agent8%20pilot"}
-  - type: pricing
+  - type: include
+    template: partials/pricing.html
     id: support
     eyebrow: Yearly support
     title: Keep up with every controller upgrade

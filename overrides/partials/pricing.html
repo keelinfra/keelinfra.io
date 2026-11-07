@@ -1,0 +1,14 @@
+{#- Price plans for a landing section: {type: include, template: partials/pricing.html, items: [{name, price, note, bullets, actions, featured}]} -#}
+<div class="ki-pricing">
+  {%- for p in s['items'] or [] %}
+  <div class="ki-price{% if p.featured %} ki-price--featured{% endif %}">
+    <h3>{{ p.name }}</h3>
+    {%- if p.price %}<div class="ki-price-amount">{{ p.price }}{% if p.note %} <small>{{ p.note | sumi_md }}</small>{% endif %}</div>{% endif %}
+    {%- if p.text %}<p>{{ p.text | sumi_md }}</p>{% endif %}
+    {%- if p.bullets %}
+    <ul class="sumi-check-list">{% for b in p.bullets %}<li>{{ icon('check') }}<span>{{ b | sumi_md }}</span></li>{% endfor %}</ul>
+    {%- endif %}
+    {%- if p.actions %}{{ actions(p.actions) }}{% endif %}
+  </div>
+  {%- endfor %}
+</div>

@@ -73,7 +73,7 @@
 .ki-mail-alt { margin: 8px 0 0; color: var(--sumi-fg-3); font-size: 13px; }
 .ki-copy-mail { margin-left: 4px; padding: 0 8px; border: 1px solid var(--sumi-line-2); border-radius: 6px; background: transparent; color: var(--sumi-fg); font: 600 12px/1.6 var(--sumi-font); cursor: pointer; }
 .ki-copy-mail:hover { border-color: var(--sumi-fg-3); }
-.sumi-price .ki-mail-alt { margin-top: 10px; }
+.ki-price .ki-mail-alt { margin-top: 10px; }
 .sumi-cta .ki-mail-alt { color: color-mix(in srgb, var(--sumi-bg) 70%, transparent); }
 
 /* Agent8 page: the proof strip under the hero has words, not numbers. */
@@ -90,3 +90,32 @@
 /* The upgrade matrix (layout: wide): text keeps its measure, the tables get the room. */
 html[data-layout="wide"] .sumi-article { max-width: 1120px; margin-inline: auto; }
 html[data-layout="wide"] :is(.sumi-article-top, .sumi-content > :not(.sumi-table)) { max-width: var(--sumi-content-w); margin-inline: auto; }
+
+/* Price plans: overrides/partials/pricing.html, used by jenkins/pricing.md. */
+.ki-pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.ki-price { display: flex; flex-direction: column; padding: 28px 26px; border: 1px solid var(--sumi-line); border-radius: 16px; background: var(--sumi-bg-elev); }
+.ki-price--featured { border-color: var(--sumi-accent); box-shadow: 0 0 0 1px var(--sumi-accent), var(--sumi-shadow-md); }
+.ki-price h3 { margin: 0 0 10px; color: var(--sumi-fg); font-size: 17px; font-weight: 650; }
+.ki-price-amount { margin: 0 0 16px; color: var(--sumi-fg); font-size: 2rem; font-weight: 740; letter-spacing: -0.03em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.ki-price-amount small { display: block; margin-top: 4px; color: var(--sumi-fg-3); font-size: 13.5px; font-weight: 500; letter-spacing: 0; }
+.ki-price > p { margin: 0 0 16px; color: var(--sumi-fg-2); font-size: 14.5px; }
+.ki-price .sumi-check-list { font-size: 14.5px; }
+.ki-price .sumi-actions-row { margin-top: auto; }
+.ki-price .sumi-btn { height: 38px; padding: 0 14px; font-size: 14px; }
+
+/* The lead forms on cra.md and jenkins-assessment.md. */
+form.ki-lead-form { display: flex; flex-direction: column; margin: 1.2em 0; padding: 22px 22px 24px; border: 1px solid var(--sumi-line); border-radius: var(--sumi-radius); background: var(--sumi-bg-elev); }
+form.ki-lead-form label { margin: 16px 0 6px; color: var(--sumi-fg); font-size: 15px; font-weight: 600; }
+form.ki-lead-form label:first-child { margin-top: 0; }
+form.ki-lead-form label:has(> input[type="checkbox"], > input[type="radio"]) { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; }
+form.ki-lead-form :is(input:not([type="checkbox"], [type="radio"], [type="submit"], [type="button"]), textarea, select) {
+  width: 100%; padding: 9px 12px; border: 1px solid var(--sumi-line-2); border-radius: 8px; background: var(--sumi-bg); color: var(--sumi-fg); font: inherit; font-size: 15px;
+}
+form.ki-lead-form textarea { resize: vertical; }
+form.ki-lead-form :is(input, textarea, select):focus-visible { border-color: var(--sumi-accent); outline: 2px solid color-mix(in srgb, var(--sumi-accent) 30%, transparent); outline-offset: 0; }
+form.ki-lead-form :is(button[type="submit"], input[type="submit"]) {
+  align-self: flex-start; margin-top: 18px; height: 42px; padding: 0 18px; border: 1px solid var(--sumi-fg); border-radius: 10px;
+  background: var(--sumi-fg); color: var(--sumi-bg); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+}
+form.ki-lead-form :is(button[type="submit"], input[type="submit"]):hover { background: color-mix(in srgb, var(--sumi-fg) 88%, var(--sumi-accent)); }
+form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13.5px; }
