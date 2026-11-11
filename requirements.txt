@@ -1,4 +1,2 @@
 mkdocs-ng==1.11.1
-# Product cards, pricing and footer columns arrive in Sumi 0.4.0 (mkdocs-ng/mkdocs-sumi PR).
-# Until it is on PyPI, build from that branch; then pin mkdocs-sumi==0.4.0 here.
-mkdocs-sumi @ git+https://github.com/mkdocs-ng/mkdocs-sumi@claude/project-thread-4wgt4y
+mkdocs-sumi==0.4.0
