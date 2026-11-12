@@ -46,8 +46,8 @@ sections:
     title: The controller upgrades. The build host doesn't have to.
     markdown: |
       <figure class="ki-how">
-      <img class="ki-light" src="../assets/agent8-how-it-works-light.svg" width="960" height="400" alt="Without Agent8, Jenkins' agent.jar needs Java 21 and a Java 8 build host cannot connect. install.sh asks the controller which agent it ships, downloads the matching Agent8 jar, checks its sha256 and swaps it in. The host runs the same java -jar agent.jar on Java 8, connects and runs builds.">
-      <img class="ki-dark" src="../assets/agent8-how-it-works-dark.svg" width="960" height="400" alt="">
+      <img class="ki-light no-zoom" src="../assets/agent8-how-it-works-light.svg" width="960" height="400" alt="Without Agent8, Jenkins' agent.jar needs Java 21 and a Java 8 build host cannot connect. install.sh asks the controller which agent it ships, downloads the matching Agent8 jar, checks its sha256 and swaps it in. The host runs the same java -jar agent.jar on Java 8, connects and runs builds.">
+      <img class="ki-dark no-zoom" src="../assets/agent8-how-it-works-dark.svg" width="960" height="400" alt="">
       </figure>
 
       ### What keeps working on the old host
