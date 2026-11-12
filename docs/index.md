@@ -106,6 +106,7 @@ sections:
       ```
   - type: cta
     id: services
+    class: ki-panel
     eyebrow: Agent8 help
     title: AIX, Solaris and HP-UX pilots, plugin checks, fleets
     text: >-
@@ -118,7 +119,7 @@ sections:
     title: From the blog
     limit: 3
     actions:
-      - {text: All posts, link: blog/index.md}
+      - {text: All posts, link: blog/index.md, primary: true}
 ---
 
 # keelinfra

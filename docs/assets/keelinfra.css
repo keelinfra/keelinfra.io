@@ -83,7 +83,6 @@
 .sumi-stats > div { justify-content: flex-end; }
 .sumi-stat-link dt a { display: inline; }
 .sumi-stat-link dt .sumi-icon { margin-inline-start: 4px; vertical-align: -2px; }
-#how .sumi-land-md { max-width: none; }
 #errors pre { white-space: pre-wrap; }
 .sumi-prose ul.ki-checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 16px; padding: 0; list-style: none; }
 .sumi-prose ul.ki-checks li { margin: 0; padding: 12px 14px 12px 40px; border: 1px solid var(--sumi-line); border-radius: 10px; background: var(--sumi-bg-elev); position: relative; }
@@ -138,7 +137,7 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
 .sumi-footer-inner { align-items: flex-start; }
 .sumi-footer-left { flex: 1 1 0; min-width: min(100%, 260px); }
 .sumi-footer-right { flex: none; }
-.sumi-copyright { max-width: 104ch; font-size: 12.5px; line-height: 1.65; }
+.sumi-copyright { font-size: 12.5px; line-height: 1.65; }
 .sumi-credit { margin-top: 6px; font-size: 12.5px; }
 /* The rule between the link columns and the legal line is as wide as the text. */
 .sumi-footer-links { position: relative; border-bottom: 0; }
@@ -181,4 +180,43 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
 .sumi-land-code { color: var(--sumi-fg); }
 [data-theme="dark"] :is(.sumi-land-code, .sumi-prose :is(.highlight, .codehilite), .sumi-prose pre) { --sumi-code-bg: #0a1520; --sumi-code-head: #08111a; }
 .sumi-land--dark :is(.highlight, .codehilite, pre) { --sumi-code-bg: #07182a; --sumi-line-2: #1d3550; }
-#status .sumi-land-md { max-width: none; }
+
+/* Width, as on the old site: in a landing section a table, a code block or a note
+   runs the full content width; only the section's intro keeps a short line. */
+.sumi-land-md { max-width: none; }
+.sumi-land-md table { width: 100%; }
+.sumi-faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); column-gap: 48px; align-items: start; max-width: none; border-top: 0; }
+.sumi-faq details { border-top: 1px solid var(--sumi-line); border-bottom: 0; }
+
+/* The help band: text on the left, the amber button on the right, one row high. */
+/* Navy in both palettes, as the header mark is; Sumi's own band turns light on a dark page. */
+.sumi-cta { --sumi-fg: var(--ki-navy); --sumi-bg: #ffffff; display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; padding: 44px; text-align: start; }
+[data-theme="dark"] .sumi-cta { box-shadow: inset 0 0 0 1px var(--sumi-line-2); }
+.sumi-cta .sumi-land-head { flex: 1 1 480px; min-width: 0; max-width: none; margin: 0; }
+.sumi-cta .sumi-land-head h2 { margin-bottom: 12px; font-size: clamp(1.5rem, 2.4vw, 1.75rem); letter-spacing: -0.02em; }
+.sumi-cta .sumi-land-lead { max-width: 62ch; margin: 0; font-size: 15.5px; }
+.sumi-cta .sumi-eyebrow { color: var(--ki-amber); }
+.sumi-cta .sumi-actions-row { flex: 0 1 auto; justify-content: flex-start; margin: 0; }
+.sumi-cta .sumi-btn--primary { background: var(--ki-amber); border-color: var(--ki-amber); color: var(--ki-navy); font-weight: 700; }
+.sumi-cta .sumi-btn--primary:hover { background: #f0b65c; border-color: #f0b65c; }
+@media (max-width: 600px) { .sumi-cta { padding: 28px 24px; } }
+
+/* On the home page the offer is a quiet white panel with a text link, as before;
+   the navy band belongs to a product's own page. */
+.ki-panel .sumi-cta { --sumi-fg: inherit; --sumi-bg: inherit; display: block; padding: 30px 32px; border: 1px solid var(--sumi-line); border-radius: 14px; background: var(--sumi-bg-elev); box-shadow: none; color: var(--sumi-fg); }
+.ki-panel .sumi-cta::before { display: none; }
+.ki-panel .sumi-cta .sumi-land-head { margin: 0 0 16px; }
+.ki-panel .sumi-cta .sumi-land-head h2 { margin-bottom: 8px; color: var(--sumi-fg); font-size: 1.3rem; }
+.ki-panel .sumi-cta .sumi-land-lead { max-width: none; color: var(--sumi-fg-2); font-size: 15.5px; }
+.ki-panel .sumi-cta .sumi-eyebrow { color: var(--sumi-accent); }
+:is(.ki-panel .sumi-cta, .sumi-land-posts) .sumi-btn--primary { min-height: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; font-size: 15.5px; font-weight: 600; }
+.ki-panel .sumi-cta .sumi-btn--primary { color: var(--sumi-link); }
+.ki-panel .sumi-cta .sumi-btn--primary:hover { background: none; color: var(--sumi-link-hover); }
+
+/* "All posts" sits on the heading's line, at the right edge, with its arrow. */
+.sumi-land-posts .sumi-land-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; align-items: baseline; }
+.sumi-land-posts .sumi-land-head { grid-area: 1 / 1; }
+.sumi-land-posts .sumi-land-after { grid-area: 1 / 2; margin: 0; }
+.sumi-land-posts .sumi-land-postlist { grid-area: 2 / 1 / 3 / 3; }
+.sumi-land-posts .sumi-btn--primary { color: var(--sumi-fg); }
+.sumi-land-posts .sumi-btn--primary:hover { background: none; color: var(--sumi-accent); }
