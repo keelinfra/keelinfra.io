@@ -100,10 +100,11 @@ sections:
           Same `java -jar` command, same service script. Offline hosts copy the jars and
           `sha256sums.txt` and use `--from DIR`; fleets use the Ansible playbook.
     markdown: |
-      > [!TIP]
-      > Releases are named after the Jenkins version they were tested with, such as
-      > `jenkins-2.580.1`. Your version is at the bottom right of every Jenkins page.
-      > [All releases →](https://github.com/keelinfra/agent8/releases)
+      <div class="ki-callout">
+      <code>jenkins-2.580.1</code>
+      <p>Releases are named after the Jenkins version they were tested with. Your version is at the bottom right of every Jenkins page.</p>
+      <a href="https://github.com/keelinfra/agent8/releases">All releases →</a>
+      </div>
 
       Full options, the Ansible playbook and troubleshooting are in the
       [README](https://github.com/keelinfra/agent8#install). Background:

@@ -220,3 +220,8 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
 .sumi-land-posts .sumi-land-postlist { grid-area: 2 / 1 / 3 / 3; }
 .sumi-land-posts .sumi-btn--primary { color: var(--sumi-fg); }
 .sumi-land-posts .sumi-btn--primary:hover { background: none; color: var(--sumi-accent); }
+
+/* A plain panel for a side note on a product page, in place of a Tip or Note box. */
+.ki-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 0 0 20px; padding: 16px 22px; border: 1px solid var(--sumi-line); border-radius: 12px; background: var(--sumi-bg-elev); }
+.sumi-prose .ki-callout p { flex: 1 1 360px; margin: 0; color: var(--sumi-fg-2); font-size: 15px; }
+.sumi-prose .ki-callout a { font-weight: 600; text-decoration: none; white-space: nowrap; }
