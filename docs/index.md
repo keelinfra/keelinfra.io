@@ -55,7 +55,7 @@ sections:
         mark: AIX
         meta: keelinfra/aix-runner · MIT
         badges:
-          - Experimental
+          - {text: Experimental, tone: warning}
           - Free
           - {text: Tested on AIX 7.3, tone: tip}
         text: GitLab Runner for AIX 7.2 and 7.3, which GitLab doesn't ship.

@@ -53,6 +53,7 @@
 .sumi-feature-icon, .ki-tile { background: var(--ki-navy); color: var(--ki-amber); }
 .sumi-land--dark .sumi-feature-icon { background: rgba(255, 255, 255, .08); }
 .sumi-hero-title em { color: var(--sumi-accent); }
+.sumi-hero-title, .sumi-land-head h2 { text-wrap: balance; }
 
 /* Product page hero: the repository line above the name. */
 .ki-product-id { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; color: var(--sumi-fg-3); font: 400 13px var(--sumi-font-mono); }
@@ -63,8 +64,7 @@
 .ki-how img { display: block; width: 100%; height: auto; border: 1px solid var(--sumi-line); border-radius: 14px; background: var(--sumi-bg-elev); }
 [data-theme="dark"] .ki-how .ki-light, [data-theme="light"] .ki-how .ki-dark { display: none; }
 
-/* Status tables: a coloured dot for "tested". */
-.sumi-prose table .badge.tip::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: currentColor; vertical-align: .08em; }
+/* The CI badge row on the evidence page. */
 .sumi-prose .ki-ci-badges { display: flex; flex-wrap: wrap; gap: 12px; }
 .sumi-prose .ki-ci-badges img { height: 20px; margin: 0; border: 0; border-radius: 0; }
 
@@ -119,3 +119,59 @@ form.ki-lead-form :is(button[type="submit"], input[type="submit"]) {
 }
 form.ki-lead-form :is(button[type="submit"], input[type="submit"]):hover { background: color-mix(in srgb, var(--sumi-fg) 88%, var(--sumi-accent)); }
 form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13.5px; }
+
+/* ── Details carried over from the old site ─────────────────────────────── */
+
+/* The header and footer line up with the page content, not the window.
+   (Sumi does this itself for pages without a sidebar after 0.4.0.) */
+@media (min-width: 921px) {
+  :is(.sumi-header-inner, .sumi-footer-inner, .sumi-footer-links) { max-width: 1200px; padding-inline: 28px; }
+}
+/* The long legal line wraps in its own column; the feed icon stays beside it. */
+.sumi-footer-inner { align-items: flex-start; }
+.sumi-footer-left { flex: 1 1 0; min-width: min(100%, 260px); }
+.sumi-footer-right { flex: none; }
+.sumi-copyright { max-width: 104ch; font-size: 12.5px; line-height: 1.65; }
+.sumi-credit { margin-top: 6px; font-size: 12.5px; }
+/* The rule between the link columns and the legal line is as wide as the text. */
+.sumi-footer-links { position: relative; border-bottom: 0; }
+.sumi-footer-links::after { content: ""; position: absolute; inset: auto 28px 0; border-bottom: 1px solid var(--sumi-line); }
+@media (max-width: 920px) { .sumi-footer-links::after { inset-inline: 20px; } }
+
+/* Check marks are green, like "tested" everywhere else. */
+:root { --ki-ok: #17734a; --ki-ok-bg: #e6f4ec; --ki-ok-ink: #145c3b; --ki-exp-bg: #fdf1dc; --ki-exp-ink: #7a4705; }
+[data-theme="dark"] { --ki-ok: #4cc38a; --ki-ok-bg: #12352a; --ki-ok-ink: #8fe0b5; --ki-exp-bg: #3a2a10; --ki-exp-ink: #f3cf8f; }
+.sumi-check-list .sumi-icon, .sumi-prose ul.ki-checks li::before { color: var(--ki-ok); }
+.sumi-land--dark .sumi-check-list .sumi-icon { color: #4cc38a; }
+
+/* Status labels: filled pills, a dot for "tested", a ring for "experimental". */
+.sumi-landing .badge, .sumi-prose table .badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border: 0; background: var(--sumi-bg-soft); color: var(--sumi-fg-2); font-size: 12.5px; line-height: 1.4; }
+.sumi-landing .badge.tip, .sumi-prose table .badge.tip { background: var(--ki-ok-bg); color: var(--ki-ok-ink); }
+.sumi-landing .badge.warning { background: var(--ki-exp-bg); color: var(--ki-exp-ink); }
+.sumi-landing .badge.tip::before, .sumi-prose table .badge.tip::before { content: ""; width: 7px; height: 7px; margin: 0; border-radius: 50%; background: currentColor; }
+.sumi-landing .badge.warning::before { content: ""; width: 7px; height: 7px; border: 1.5px solid currentColor; border-radius: 50%; }
+
+/* Product cards: the name and the one-line pitch carry the card. */
+.sumi-features--cards .sumi-feature { padding: 30px 30px 28px; }
+.sumi-features--cards .sumi-feature h3 { font-size: 21px; letter-spacing: -0.015em; line-height: 1.25; }
+.sumi-features--cards .sumi-feature-head { gap: 16px; margin-bottom: 18px; }
+.sumi-features--cards .sumi-feature-head .sumi-feature-icon { width: 48px; height: 48px; border-radius: 11px; }
+.sumi-features--cards .sumi-feature-mark { font-size: 20px; }
+.sumi-features--cards .sumi-feature-icon .sumi-icon { width: 24px; height: 24px; }
+.sumi-features--cards .sumi-feature > p { margin-top: 4px; font-size: 17px; font-weight: 500; line-height: 1.5; }
+.sumi-features--cards .sumi-feature .sumi-check-list { font-size: 15px; }
+.sumi-features--cards .sumi-feature .sumi-check-list li { margin-bottom: 8px; }
+
+/* Code is on dark navy in both palettes, like a terminal. */
+.sumi-land-code, .sumi-prose :is(.highlight, .codehilite), .sumi-prose pre {
+  --sumi-code-bg: #0e1b28; --sumi-code-head: #0a1622; --sumi-fg: #d7e3ee; --sumi-fg-2: #b4c3d1; --sumi-fg-3: #7f95aa;
+  --sumi-line: rgba(255, 255, 255, 0.08); --sumi-line-2: rgba(255, 255, 255, 0.16);
+  --hl-kw: #f2896d; --hl-str: #a8d17f; --hl-com: #6f8ba6; --hl-fn: #8fbcec; --hl-num: #e6b56a; --hl-type: #d99bd2;
+  --hl-bi: #72d0c5; --hl-op: #b2bdc8; --hl-attr: #e6b56a; --hl-var: #ee9db8;
+  --hl-del-bg: rgba(240, 128, 111, 0.16); --hl-ins-bg: rgba(116, 196, 147, 0.15); --hl-mark: rgba(230, 181, 106, 0.16);
+  color-scheme: dark;
+}
+.sumi-land-code { color: var(--sumi-fg); }
+[data-theme="dark"] :is(.sumi-land-code, .sumi-prose :is(.highlight, .codehilite), .sumi-prose pre) { --sumi-code-bg: #0a1520; --sumi-code-head: #08111a; }
+.sumi-land--dark :is(.highlight, .codehilite, pre) { --sumi-code-bg: #07182a; --sumi-line-2: #1d3550; }
+#status .sumi-land-md { max-width: none; }
