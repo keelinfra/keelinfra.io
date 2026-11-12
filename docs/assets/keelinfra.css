@@ -185,8 +185,11 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
    runs the full content width; only the section's intro keeps a short line. */
 .sumi-land-md { max-width: none; }
 .sumi-land-md table { width: 100%; }
-.sumi-faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); column-gap: 48px; align-items: start; max-width: none; border-top: 0; }
-.sumi-faq details { border-top: 1px solid var(--sumi-line); border-bottom: 0; }
+/* Questions and answers: two columns with every answer in view, a rule above each, as on the old site. */
+.ki-faq .sumi-features { gap: 28px 40px; overflow: visible; border: 0; border-radius: 0; background: none; }
+.ki-faq .sumi-feature { padding: 18px 0 0; border-top: 1px solid var(--sumi-line); background: none; }
+.ki-faq .sumi-feature h3 { margin-bottom: 6px; }
+.ki-faq .sumi-feature p { font-size: 15px; line-height: 1.6; }
 
 /* The help band: text on the left, the amber button on the right, one row high. */
 /* Navy in both palettes, as the header mark is; Sumi's own band turns light on a dark page. */
@@ -240,3 +243,14 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
   .sumi-land-head { margin-bottom: 32px; }
   .sumi-land-head h2 { font-size: clamp(1.8rem, 2.6vw, 2.25rem); }
 }
+
+/* A table on a product page, as on the old site: a white section, small capitals for the
+   head with no tint, plain mono values, and the footnote in small print. */
+.sumi-land--soft { background: var(--sumi-bg-elev); }
+.sumi-land-md th { padding: 12px 18px; border-bottom-color: var(--sumi-line); background: none; color: var(--sumi-fg-3); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; }
+.sumi-land-md td { padding: 12px 18px; vertical-align: middle; }
+.sumi-land-md tbody tr:hover td { background: none; }
+.sumi-land-md td code { padding: 0; border: 0; background: none; color: inherit; font-size: 14px; font-weight: 400; }
+.sumi-prose p.ki-fine { max-width: 76ch; color: var(--sumi-fg-3); font-size: 13.5px; line-height: 1.6; }
+/* The line above a title is amber, as the old kicker was. */
+.sumi-eyebrow { color: var(--sumi-accent); }

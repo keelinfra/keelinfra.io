@@ -81,6 +81,7 @@ sections:
       OpenJ9 and IBM Java (J9) are outside Jenkins' own support. Agent8 tests OpenJ9 8 in CI and
       fixes the J9 problems it finds, best effort; report them on
       [Agent8's issues](https://github.com/keelinfra/agent8/issues).
+      {.ki-fine}
   - type: steps
     id: install
     eyebrow: Install
@@ -122,52 +123,54 @@ sections:
       If the host can install a newer Java, do that. If it can't, as on AIX, Solaris or HP-UX, or
       where the JDK must stay as it is, [install Agent8](#install) on it. On an SSH node that
       still shows this error, set the node's *Java Path* to the `java` file Agent8 installed.
-  - type: faq
+  - type: features
     id: faq
+    class: ki-faq
+    columns: 2
     title: Questions teams ask first
     items:
-      - q: Is this an official Jenkins project?
-        a: >-
+      - title: Is this an official Jenkins project?
+        text: >-
           No. Agent8 is independent and not endorsed or supported by the Jenkins project. Report
           problems on its [GitHub issues](https://github.com/keelinfra/agent8/issues), not the
           Jenkins tracker.
-      - q: Why not run agent.jar on Java 21 and build with the old JDK?
-        a: >-
+      - title: Why not run agent.jar on Java 21 and build with the old JDK?
+        text: >-
           If the host can install Java 21, do that and keep building with the old JDK; you don't
           need Agent8. It is for hosts that can't, such as AIX 7.1, HP-UX on Itanium and Solaris.
           Not sure which yours is? [Ask us](../jenkins-assessment.md).
-      - q: Why not run the build in a container?
-        a: >-
+      - title: Why not run the build in a container?
+        text: >-
           That works for many RHEL 6 builds, and RHEL 6 x86_64 hosts can also install Amazon
           Corretto 21 or Azul Zulu 21 and run the stock agent. Neither covers builds that must run
           natively on AIX, Solaris or HP-UX hardware.
-      - q: Does any controller setting matter?
-        a: >-
+      - title: Does any controller setting matter?
+        text: >-
           Only if the Versions Node Monitors plugin (`versioncolumn`) is installed. Its JVM Version
           monitor takes Agent8 nodes offline seconds after they connect, so set it not to
           disconnect. Its Remoting Version monitor does the same when the agent's build differs from
           the controller's. The [README](https://github.com/keelinfra/agent8#install) has the
           configuration-as-code snippet.
-      - q: What happens when we upgrade the controller?
-        a: >-
+      - title: What happens when we upgrade the controller?
+        text: >-
           Rerun `install.sh` (or the playbook) and restart the agent. Jenkins refuses agents older
           than a minimum remoting version that it raises over time: Jenkins 2.586 already refuses
           the Agent8 build for 2.462.3. Which upgrade paths load every plugin, and where Java has to
           change on the way, is in the [upgrade matrix](upgrade-matrix/index.md).
-      - q: What hasn't been tested yet, and what doesn't work?
-        a: >-
+      - title: What hasn't been tested yet, and what doesn't work?
+        text: >-
           Plugins that run their own code on the agent beyond Git checkout (JGit and command-line
           git) and credentials, such as Docker or artifact upload steps, are untested. The Maven
           project type does not work: it starts its own JVM, which Agent8 does not reach. Run Maven
           from a Pipeline or freestyle shell step (`sh 'mvn ...'`) instead. The
           [README](https://github.com/keelinfra/agent8#known-gaps) keeps the list.
-      - q: Which launch methods work?
-        a: >-
+      - title: Which launch methods work?
+        text: >-
           Inbound agents, started with `java -jar agent.jar`, and the SSH Build Agents launcher:
           set the node's *Java Path* to the `java` file `install.sh` writes, and it runs Agent8
           instead of the stock jar the launcher copies.
-      - q: What is the license?
-        a: >-
+      - title: What is the license?
+        text: >-
           Agent8's own code is MIT. Its jars also contain Jenkins remoting (MIT), ASM
           (BSD-3-Clause) and JvmDowngrader classes (LGPL-2.1), and each release ships JvmDowngrader
           itself as `jvmdg.jar` (LGPL-2.1, unmodified).
