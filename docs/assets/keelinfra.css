@@ -127,6 +127,9 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
 @media (min-width: 921px) {
   :is(.sumi-header-inner, .sumi-footer-inner, .sumi-footer-links) { max-width: 1200px; padding-inline: 28px; }
 }
+/* The first footer column is the brand: the logo and the name, as in the header. */
+.sumi-footer-col:first-child .sumi-footer-head { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+.sumi-footer-col:first-child .sumi-footer-head::before { content: ""; flex: none; width: 22px; height: 22px; background: url("logo.svg") center / contain no-repeat; }
 /* The long legal line wraps in its own column; the feed icon stays beside it. */
 .sumi-footer-inner { align-items: flex-start; }
 .sumi-footer-left { flex: 1 1 0; min-width: min(100%, 260px); }
