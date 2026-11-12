@@ -79,6 +79,10 @@
 /* Agent8 page: the proof strip under the hero has words, not numbers. */
 #proof { padding: 40px 0; }
 #proof .sumi-stats dd { font-size: 1.45rem; letter-spacing: -0.02em; }
+/* The values stay on one line across the strip when a label wraps (fixed in Sumi after 0.4.0). */
+.sumi-stats > div { justify-content: flex-end; }
+.sumi-stat-link dt a { display: inline; }
+.sumi-stat-link dt .sumi-icon { margin-inline-start: 4px; vertical-align: -2px; }
 #how .sumi-land-md { max-width: none; }
 #errors pre { white-space: pre-wrap; }
 .sumi-prose ul.ki-checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 16px; padding: 0; list-style: none; }
