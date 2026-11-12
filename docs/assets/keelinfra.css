@@ -247,10 +247,74 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
 /* A table on a product page, as on the old site: a white section, small capitals for the
    head with no tint, plain mono values, and the footnote in small print. */
 .sumi-land--soft { background: var(--sumi-bg-elev); }
-.sumi-land-md th { padding: 12px 18px; border-bottom-color: var(--sumi-line); background: none; color: var(--sumi-fg-3); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; }
+.sumi-prose th { border-bottom-color: var(--sumi-line); background: none; color: var(--sumi-fg-3); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; }
+.sumi-land-md th { padding: 12px 18px; }
 .sumi-land-md td { padding: 12px 18px; vertical-align: middle; }
 .sumi-land-md tbody tr:hover td { background: none; }
 .sumi-land-md td code { padding: 0; border: 0; background: none; color: inherit; font-size: 14px; font-weight: 400; }
 .sumi-prose p.ki-fine { max-width: 76ch; color: var(--sumi-fg-3); font-size: 13.5px; line-height: 1.6; }
 /* The line above a title is amber, as the old kicker was. */
 .sumi-eyebrow { color: var(--sumi-accent); }
+
+/* Steps on a light section are cards with the navy number tile, as on the old site;
+   on the navy band they stay a plain numbered row. */
+.sumi-land-section:not(.sumi-land--dark) .sumi-steplist { gap: 20px; }
+.sumi-land-section:not(.sumi-land--dark) .sumi-steplist li { padding: 24px; border: 1px solid var(--sumi-line); border-radius: 12px; background: var(--sumi-bg-elev); }
+.sumi-land-section:not(.sumi-land--dark) .sumi-steplist li::before { content: counter(land); display: grid; place-items: center; width: 32px; height: 32px; margin-bottom: 14px; border-radius: 8px; background: var(--ki-navy); color: var(--ki-amber); font: 600 15px/1 var(--sumi-font-mono); }
+.sumi-steplist li > div > :last-child { margin-bottom: 0; }
+.sumi-land--dark .sumi-steplist h3 { color: #ffffff; }
+
+/* Phones and tablets: a product site's header, the name on the left and one Menu button
+   on the right, which opens from that side. */
+@media (max-width: 920px) {
+  .sumi-brand { order: 1; margin-inline-end: auto; }
+  .sumi-header-tools { order: 2; margin-inline-start: 0; }
+  .sumi-header-tools :is(.sumi-theme-btn, .sumi-repo) { display: none; }
+  .sumi-menu-btn { order: 3; display: inline-flex; align-items: center; width: auto; height: 38px; margin-inline: 6px 0; padding: 0 14px; border: 1px solid var(--sumi-line-2); border-radius: 8px; background: var(--sumi-bg-elev); color: var(--sumi-fg-2); font: 500 14px/1 var(--sumi-font); }
+  .sumi-menu-btn .sumi-icon { display: none; }
+  .sumi-menu-btn::after { content: "Menu"; }
+  .sumi-menu-btn[aria-expanded="true"]::after { content: "Close"; }
+  .sumi-sidebar { inset-inline: auto 0; padding-inline: 12px; border-inline: 1px solid var(--sumi-line) 0; transform: translateX(102%); }
+  .sumi-sidebar-tabs a { padding-block: 10px; font-size: 16px; }
+}
+
+/* Phones: the old site's sizes, so a page reads as a product page and not as an article. */
+@media (max-width: 600px) {
+  .sumi-header-inner, .sumi-land-inner { padding-inline: 24px; }
+  .sumi-shell, .sumi-shell--no-toc { padding-inline: 24px; }
+  /* An article page opens on its title: the copy-as-Markdown tools stay on wider screens. */
+  .sumi-article-top { min-height: 0; margin-bottom: 0; }
+  .sumi-article-top .sumi-actions { display: none; }
+  .sumi-article-top > :not(.sumi-actions) { margin-bottom: 14px; }
+  .sumi-prose { line-height: 1.65; }
+  .sumi-prose h1, .sumi-post .sumi-prose h1 { font-size: 1.65rem; line-height: 1.2; }
+  .sumi-prose h1 + p:not(.sumi-subtitle) { color: inherit; font-size: 1rem; line-height: inherit; }
+  .sumi-prose h2 { font-size: 1.3rem; }
+  .sumi-prose .sumi-subtitle { font-size: 14.5px; line-height: 1.6; }
+  .sumi-post-title { font-size: 1.2rem; }
+  .sumi-post-link { padding-block: 20px; }
+  .sumi-view-toggle { display: none; }
+  .sumi-footer-inner, .sumi-footer-links { padding-inline: 24px; }
+  .sumi-footer-links::after { inset-inline: 24px; }
+  .sumi-footer-left { min-width: 100%; }
+  .sumi-hero { padding: 48px 0 44px; }
+  .sumi-hero-title { font-size: 2.05rem; line-height: 1.12; letter-spacing: -0.03em; }
+  .sumi-hero-text { margin-bottom: 26px; font-size: 17px; }
+  .sumi-land-section { padding: 52px 0; }
+  .sumi-land-head { margin-bottom: 26px; }
+  .sumi-land-head h2 { font-size: 1.7rem; letter-spacing: -0.025em; }
+  .sumi-land-lead { font-size: 16.5px; }
+  .sumi-eyebrow { align-items: flex-start; margin-bottom: 14px; line-height: 1.5; letter-spacing: .06em; }
+  .sumi-eyebrow-dot { flex: none; margin-top: 6px; }
+  .sumi-btn { min-height: 44px; }
+  :is(.ki-panel .sumi-cta, .sumi-land-posts) .sumi-btn--primary { min-height: 0; }
+  .sumi-stats { grid-template-columns: minmax(0, 1fr); }
+  .sumi-stats > div { padding: 16px 20px; }
+  .sumi-steplist { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .sumi-land-md td:first-child { min-width: 148px; }
+  .sumi-land-md :is(th, td) { padding: 11px 14px; }
+  /* "All posts" goes back up beside the heading. */
+  .sumi-land-posts .sumi-land-inner { align-items: baseline; }
+  .sumi-land-posts .sumi-land-head { grid-area: 1 / 1 / 2 / 2; }
+  .sumi-land-posts .sumi-land-after { grid-area: 1 / 2; align-self: baseline; margin: 0; }
+}
