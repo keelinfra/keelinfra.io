@@ -213,11 +213,16 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
 .ki-panel .sumi-cta .sumi-btn--primary { color: var(--sumi-link); }
 .ki-panel .sumi-cta .sumi-btn--primary:hover { background: none; color: var(--sumi-link-hover); }
 
-/* "All posts" sits on the heading's line, at the right edge, with its arrow. */
-.sumi-land-posts .sumi-land-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; align-items: baseline; }
-.sumi-land-posts .sumi-land-head { grid-area: 1 / 1; }
-.sumi-land-posts .sumi-land-after { grid-area: 1 / 2; margin: 0; }
+/* "All posts" sits on the last post's line, at the right edge, with its arrow. */
+.sumi-land-posts .sumi-land-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+.sumi-land-posts .sumi-land-head { grid-area: 1 / 1 / 2 / 3; }
 .sumi-land-posts .sumi-land-postlist { grid-area: 2 / 1 / 3 / 3; }
+.sumi-land-posts .sumi-land-after { grid-area: 2 / 2; align-self: end; z-index: 1; margin: 0 0 12px; }
+.sumi-land-posts .sumi-land-postlist li:last-child a { padding-inline-end: 132px; }
+@media (max-width: 600px) {
+  .sumi-land-posts .sumi-land-after { grid-area: 3 / 1 / 4 / 3; margin: 18px 0 0; }
+  .sumi-land-posts .sumi-land-postlist li:last-child a { padding-inline-end: 0; }
+}
 .sumi-land-posts .sumi-btn--primary { color: var(--sumi-fg); }
 .sumi-land-posts .sumi-btn--primary:hover { background: none; color: var(--sumi-accent); }
 
