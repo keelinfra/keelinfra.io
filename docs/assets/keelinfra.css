@@ -230,3 +230,13 @@ form.ki-lead-form > p { margin: 14px 0 0; color: var(--sumi-fg-3); font-size: 13
 .ki-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 0 0 20px; padding: 16px 22px; border: 1px solid var(--sumi-line); border-radius: 12px; background: var(--sumi-bg-elev); }
 .sumi-prose .ki-callout p { flex: 1 1 360px; margin: 0; color: var(--sumi-fg-2); font-size: 15px; }
 .sumi-prose .ki-callout a { font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+/* The old site's vertical rhythm: hero 72/56, sections 64px, so a page reads as compactly as before
+   and the products start above the fold on a laptop. */
+@media (min-width: 921px) {
+  .sumi-hero { padding: 72px 0 56px; }
+  .sumi-land-section { padding: 64px 0; }
+  .sumi-hero + .sumi-land-section { padding-top: 56px; }
+  .sumi-land-head { margin-bottom: 32px; }
+  .sumi-land-head h2 { font-size: clamp(1.8rem, 2.6vw, 2.25rem); }
+}
