@@ -30,6 +30,9 @@ aliases = [
 ]
 [extra]
 subtitle = "Discontinued on 24 October 2026"
+# Kept for inbound links, out of search indexes: keelinfra is Jenkins-only now,
+# and search engines and AI answers still describe it as a Keycloak vendor.
+noindex = true
 +++
 
 keelinfra's self-hosted Keycloak distribution

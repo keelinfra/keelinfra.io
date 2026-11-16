@@ -19,6 +19,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    outputs:
+      indexnow_urls: ${{ steps.urls.outputs.urls }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
@@ -41,6 +43,19 @@ jobs:
           pipx install html5validator==0.4.2
           html5validator --root public/ --also-check-svg --log INFO
 
+      # Every URL in the sitemap, plus the Keycloak notice (noindex now, so it
+      # leaves the sitemap; submitting it once more lets Bing see the noindex).
+      - name: URL list for IndexNow
+        id: urls
+        run: |
+          python3 - public/sitemap.xml >> "$GITHUB_OUTPUT" <<'EOF'
+          import json, sys, xml.etree.ElementTree as ET
+          ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [e.text.strip() for e in ET.parse(sys.argv[1]).findall(".//s:loc", ns)]
+          urls.append("https://keelinfra.io/keycloak/")
+          print("urls=" + json.dumps(urls))
+          EOF
+
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9  # v5.0.0
         with:
           path: public/
@@ -59,3 +74,26 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346  # v5.0.1
+
+  # Tell Bing and the other IndexNow engines (Yandex, Naver, Seznam) which
+  # pages exist after each deploy, instead of waiting for a crawl; ChatGPT
+  # search and Copilot answer from Bing's index. Google doesn't use IndexNow,
+  # it reads sitemap.xml. The key is public by design: IndexNow checks it
+  # against static/<key>.txt on this site. No token, no third-party action,
+  # and a failure here never fails the deploy.
+  indexnow:
+    needs: [build, deploy]
+    runs-on: ubuntu-24.04
+    permissions: {}
+    continue-on-error: true
+    steps:
+      - name: Submit URLs
+        env:
+          KEY: 6f2a774ae1c556a1b212de7d2919f81e
+          URLS: ${{ needs.build.outputs.indexnow_urls }}
+        run: |
+          body=$(jq -n --arg key "$KEY" --argjson urls "$URLS" \
+            '{host: "keelinfra.io", key: $key, keyLocation: ("https://keelinfra.io/" + $key + ".txt"), urlList: $urls}')
+          echo "$body" | jq -r '.urlList[]'
+          curl -sS --fail-with-body -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' -d "$body" -w '\nHTTP %{http_code}\n'

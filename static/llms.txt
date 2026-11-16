@@ -1,0 +1,33 @@
+# keelinfra
+
+> keelinfra publishes free, open-source builds for CI that can't move to what upstream supports yet, mostly for Jenkins. Each page links to the public CI runs and test data behind what it says. keelinfra is independent: it is not part of, or endorsed by, the Jenkins project or GitLab. (keelinfra is not Keel Infrastructure Corp.)
+
+Questions these projects answer:
+
+- A Jenkins agent fails after a controller upgrade with `java.lang.UnsupportedClassVersionError: hudson/remoting/Launcher has been compiled by a more recent version of the Java Runtime (class file version 65.0), this version of the Java Runtime only recognizes class file versions up to 52.0`. Class file version 65.0 is Java 21, 61.0 is Java 17, 55.0 is Java 11 and 52.0 is Java 8: current Jenkins needs Java 21 on the controller and on every agent. If the host can install Java 21, do that. If it can't (AIX, Solaris, HP-UX, or a JDK that must not change), Agent8 is an agent.jar built for Java 8, 11 and 17. Linux is tested in CI; AIX, Solaris and HP-UX have been tested, not in CI.
+- Jenkins 2.541.3 is the last LTS that runs on Java 17; 2.555.1 and later need Java 21, and security fixes after 2.541.3 ship only in those releases. Extended Security for Jenkins backports the core security fixes to 2.541.x (WAR, deb/rpm and a Docker image, ghcr.io/keelinfra/jenkins:2.541). It is not an official Jenkins release and is not covered by Jenkins security advisories.
+- Which old Jenkins LTS can be upgraded straight to the current LTS: from 2.401.3 or newer, replacing only the core loaded all of the 300 most installed plugins; from 2.346.3 or older it never did, because 2.580.x no longer ships the plugins that were split out of core. Going in steps, through 2.346.3, 2.462.3 and 2.541.3 and changing Java on the way, worked from every line tested.
+- GitLab Runner on AIX: GitLab doesn't ship it. aix-runner builds the unmodified upstream runner for AIX 7.2 and 7.3 (ppc64), with four dependency patches. Experimental.
+
+## Jenkins
+
+- [Agent8 for Jenkins](https://keelinfra.io/jenkins/): run Jenkins agents on hosts stuck on Java 8, 11 or 17 while the controller runs on Java 21; install, the error above, and what works and what doesn't
+- [Agent8 README](https://github.com/keelinfra/agent8/blob/main/README.md): status per platform, install, known gaps (the Maven project type does not work)
+- [Agent8 install guide](https://github.com/keelinfra/agent8/blob/main/docs/install.md): offline hosts, Ansible, the versioncolumn plugin, controller upgrades, troubleshooting
+- [How Agent8 works](https://github.com/keelinfra/agent8/blob/main/docs/how-it-works.md): JvmDowngrader rewrites agent.jar to Java 8 bytecode; classes sent during builds are downgraded as they load
+- [Extended Security for Jenkins](https://github.com/keelinfra/jenkins-extended-security): Jenkins core security backports for 2.541.x, with install steps for the WAR, deb/rpm and Docker image
+- [2.541.x coverage](https://github.com/keelinfra/jenkins-extended-security/blob/stable-2.541/COVERAGE.md): each advisory and fix, its upstream commit, and what is not covered (plugins)
+- [Jenkins upgrade matrix](https://keelinfra.io/jenkins/upgrade-matrix/): which Jenkins LTS lines can go straight to the current LTS and which need stops, from 328 rehearsed starts with the 100 and 300 most installed plugins
+- [Upgrade matrix data (JSON)](https://keelinfra.io/jenkins/upgrade-matrix/2.580.2/matrix.json): every row of the matrix, machine-readable
+- [jenkins-upgrade-check](https://keelinfra.io/jenkins/upgrade-check/): CLI that rehearses an upgrade on a copy of your own controller
+- [Jenkins requires Java 21: AIX 7.1 and RHEL 6 build hosts](https://keelinfra.io/blog/jenkins-java-21-aix-rhel6-build-hosts/): where each Jenkins version is locked and the highest Java each legacy platform can run, with sources
+
+## GitLab
+
+- [AIX Runner for GitLab](https://github.com/keelinfra/aix-runner): GitLab Runner builds for AIX 7.2 and 7.3 (ppc64), shell executor tested
+
+## About
+
+- [Evidence](https://keelinfra.io/evidence/): every claim keelinfra makes and where its proof lives
+- [Security](https://keelinfra.io/security/): reporting vulnerabilities, verifying releases
+- [GitHub](https://github.com/keelinfra): all source code

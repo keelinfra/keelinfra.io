@@ -59,7 +59,7 @@
   {%- set m_og = page.extra.og_image | default(value=config.extra.og_image_default) %}
 {%- elif section %}
   {%- if section.path == "/" %}
-    {%- set m_title = "keelinfra — Self-hosted infrastructure, tested in public" %}
+    {%- set m_title = "keelinfra — Tested builds for CI that can't upgrade yet" %}
   {%- else %}
     {%- set m_title = section.title ~ " — keelinfra" %}
   {%- endif %}
@@ -76,6 +76,9 @@
 <title>{{ m_title }}</title>
 <meta name="description" content="{{ m_desc }}">
 <link rel="canonical" href="{{ config.base_url ~ m_path }}">
+{%- if page and page.extra.noindex %}
+<meta name="robots" content="noindex">
+{%- endif %}
 <meta property="og:title" content="{{ m_title }}">
 <meta property="og:description" content="{{ m_desc }}">
 <meta property="og:url" content="{{ config.base_url ~ m_path }}">
