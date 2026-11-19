@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="about-head">
+  <div class="eyebrow">about keelinfra</div>
+  <h1>{{ page.extra.heading }}</h1>
+  <p class="lead">{{ page.extra.lead }}</p>
+</header>
+<nav class="about-projects" aria-label="Projects">
+  <a href="https://github.com/keelinfra/jenkins-extended-security"><div class="tile sm" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a33d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><div><strong>Extended Security for Jenkins</strong><span>Core security fixes backported to 2.541.x, for controllers that can't leave Java 17 yet.</span></div></a>
+  <a href="/jenkins/"><div class="tile sm" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a33d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><path d="M6.5 14v-2.5a2 2 0 0 1 2-2h3M17.5 10v2.5a2 2 0 0 1-2 2h-3"/></svg></div><div><strong>Agent8 for Jenkins</strong><span>Keeps build hosts stuck on Java 8, 11 or 17 connected to a current controller.</span></div></a>
+  <a href="/jenkins/upgrade-matrix/"><div class="tile sm" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a33d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div><div><strong>Jenkins upgrade matrix</strong><span>How an old controller gets to the current LTS, from 328 rehearsed starts.</span></div></a>
+  <a href="https://github.com/keelinfra/aix-runner"><div class="tile sm" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a33d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div><div><strong>AIX Runner for GitLab</strong><span>GitLab Runner built for AIX 7.2 and 7.3, which GitLab doesn't ship.</span></div></a>
+</nav>
+<article class="prose about-body">
+  {{ page.content | safe }}
+</article>
+{% endblock %}

@@ -1,18 +1,12 @@
 +++
 title = "About"
 description = "keelinfra is an open-source project by Xianpeng Shen: tested builds for Jenkins setups that can't move to what upstream supports yet, with the tests behind each claim published."
-template = "page.html"
-+++
+template = "about.html"
 
-keelinfra ships tested, open-source builds for CI that can't upgrade yet, until it can:
-[Extended Security for Jenkins](https://github.com/keelinfra/jenkins-extended-security), which
-backports core security fixes to 2.541.x for controllers that can't leave Java 17 yet;
-[Agent8 for Jenkins](/jenkins/), which keeps build hosts stuck on Java 8, 11 or 17 connected to a
-current Jenkins controller;
-the [Jenkins upgrade matrix](/jenkins/upgrade-matrix/), which shows how an old controller gets to
-the current LTS; and [AIX Runner for GitLab](https://github.com/keelinfra/aix-runner), a GitLab
-Runner build for AIX. (An earlier Keycloak distribution was
-[discontinued](/keycloak/) in October 2026.)
+[extra]
+heading = "Tested builds for the CI that can't move yet"
+lead = "keelinfra is an open-source project for Jenkins setups that can't follow upstream on its schedule. It ships tested builds that keep them running, and maps the way to the current release, with the tests behind every claim in public."
++++
 
 ## Why
 
@@ -24,14 +18,11 @@ the open, and maps the way to the current release.
 
 ## How it is run
 
-1. **Tested, not promised.** No claim ships without a test behind it: a public CI run, a
-   published measurement, or a rehearsal you can run yourself. Where a platform is tested by
-   hand and not in CI (AIX, Solaris, HP-UX), the page says so. The [evidence page](/evidence/)
-   lists every claim and its proof.
-2. **All open source.** Agent8, Extended Security and aix-runner are MIT;
-   jenkins-upgrade-check is Apache-2.0. No open-core split, no gated features, no relicensing.
-3. **Your machines, your data.** Nothing phones home. If keelinfra stopped tomorrow, nothing you
-   run would stop: the code and the build scripts are public, so you can keep it going yourself.
+<ol class="principles">
+<li><strong>Tested, not promised.</strong> No claim ships without a test behind it: a public CI run, a published measurement, or a rehearsal you can run yourself. Where a platform is tested by hand and not in CI (AIX, Solaris, HP-UX), the page says so. The <a href="/evidence/">evidence page</a> lists every claim and its proof.</li>
+<li><strong>All open source.</strong> Agent8, Extended Security and aix-runner are MIT; jenkins-upgrade-check is Apache-2.0. No open-core split, no gated features, no relicensing.</li>
+<li><strong>Your machines, your data.</strong> Nothing phones home. If keelinfra stopped tomorrow, nothing you run would stop: the code and the build scripts are public, so you can keep it going yourself.</li>
+</ol>
 
 ## Get involved
 
@@ -60,3 +51,5 @@ Lithuania, who also maintains:
 
 Public questions: the GitHub issues of each project. Anything that can't be public:
 [hello@keelinfra.io](mailto:hello@keelinfra.io). Security reports: see [Security](/security/).
+
+<p class="meta">An earlier Keycloak distribution was <a href="/keycloak/">discontinued</a> in October 2026.</p>
