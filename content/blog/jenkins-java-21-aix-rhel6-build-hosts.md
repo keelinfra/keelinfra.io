@@ -196,18 +196,15 @@ Known gaps:
 - The Maven project type (maven-plugin) does not work: it starts its own agent JVM, which Agent8
   does not reach. Run Maven from a Pipeline or freestyle shell step (`sh 'mvn ...'`) instead.
 
-## Try it, or get help
+## Try it, and say how it went
 
-Agent8 is free and open source. If you can try it yourself, start with the
+Agent8 is free and open source. Start with the
 [README](https://github.com/keelinfra/agent8), and report anything that breaks as a
 [GitHub issue](https://github.com/keelinfra/agent8/issues).
 
-Write to us instead if your hosts run AIX, Solaris or HP-UX, where Agent8 is tested but not in
-CI, if you need to know whether the plugins your builds use work on a Java 8 agent, or if you
-want the rollout done with you rather than by you. The first answer is free: for each host, the
-highest Java it can run, which path above fits it, and what has and has not been verified for
-that platform.
-[Tell us about your build hosts →](/jenkins-assessment/)
+Reports from AIX, Solaris and HP-UX, where Agent8 is tested but not in CI, and from plugins your
+builds use on a Java 8 agent help most, whether they worked or not. Not sure which path above
+fits your hosts? [Ask →](/jenkins-assessment/)
 
 ---
 

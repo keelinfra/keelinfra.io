@@ -10,7 +10,7 @@ subtitle = "Free and open source (Apache-2.0) · one static binary · the rehear
 +++
 
 Most upgrades only need the answer in the [upgrade matrix](/jenkins/upgrade-matrix/): which LTS
-lines can go straight to 2.580.1, which stops the others need, and the Java for each, with the
+lines can go straight to 2.580.2, which stops the others need, and the Java for each, with the
 data as JSON that you or an AI agent can follow. jenkins-upgrade-check is the tool that made
 it; use it when you want the same rehearsal for your own plugin list and configuration.
 
@@ -23,7 +23,8 @@ on the controller. Source, install and every option:
 ## Why rehearse
 
 We upgraded a controller with the 300 most installed plugins from the last release of every
-LTS line since 2.60.3 to 2.580.1 ([upgrade matrix](/jenkins/upgrade-matrix/), 2026-10-21):
+LTS line since 2.60.3 to 2.580.1 ([upgrade matrix](/jenkins/upgrade-matrix/2.580.1/), 2026-10-21;
+the run to 2.580.2 on 2026-10-31 came out the same):
 
 - **Replacing only the war, package or image:** Jenkins did not start from 12 of the 38 lines,
   and started with plugins failing from 12 more. 13.6% of the controllers that report usage

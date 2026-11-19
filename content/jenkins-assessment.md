@@ -1,34 +1,37 @@
 +++
-title = "Help moving legacy build hosts to current Jenkins"
-description = "Agent8 is free and open source. Write to us for help rolling it out: AIX, Solaris and HP-UX pilots, plugin compatibility on a Java 8 agent, and a free first look at which path each build host needs."
+title = "Questions about old build hosts and Jenkins upgrades"
+description = "Which path fits each build host when Jenkins moves to Java 21: a normal agent, a container, or Agent8. Ask in a GitHub issue, or by email when the details can't be public."
 template = "assessment.html"
 
 [extra]
-subtitle = "First answer free · in writing · within two business days"
+subtitle = "Ask in public where you can · email when you can't"
 +++
 
 [Agent8](https://github.com/keelinfra/agent8) is free and open source, and you can roll it out
-yourself: the README has the install script and an Ansible playbook, and
-[GitHub issues](https://github.com/keelinfra/agent8/issues) are the place for bugs.
+yourself: the README has the install script and an Ansible playbook. The
+[upgrade matrix](/jenkins/upgrade-matrix/) and
+[Extended Security for Jenkins 2.541.x](https://github.com/keelinfra/jenkins-extended-security)
+cover the controller side.
 
-Write to us when that is not enough:
+**Ask in public first.** Bugs and questions go to the GitHub issues of
+[Agent8](https://github.com/keelinfra/agent8/issues),
+[Extended Security](https://github.com/keelinfra/jenkins-extended-security/issues) or
+[jenkins-upgrade-check](https://github.com/keelinfra/jenkins-upgrade-check/issues). An answer
+there helps the next person with the same hosts, and a fix lands in the next release.
 
-- **Your hosts run AIX, Solaris or HP-UX.** Agent8 has been tested on AIX, Solaris and HP-UX. We run it
-  with you on your platform as a pilot, and fix what breaks.
-- **You need to know whether your plugins work.** Plugins that run their own code on agents
-  are the main open risk on a Java 8 agent. CI tests Git checkout (JGit and command-line git)
-  and credentials binding; others, such as Docker or artifact upload steps, still need testing.
-  We check the ones your builds use.
-- **You have many hosts, or you need longer-term support.**
-- **You are not sure which path each host needs.** Some can run a normal Java 21 agent, some
-  builds can move into a container, and the rest need agent8.
+The questions that come up most:
 
-The first answer is free and in writing: for each host, the highest Java it can run with the
-vendor source for it, the path that fits, and what we have not verified for your platform. If
-every host you have can run a normal agent, that is what we will tell you. The background is in
-[Jenkins requires Java 21. What happens to your AIX 7.1 and RHEL 6 build hosts?](/blog/jenkins-java-21-aix-rhel6-build-hosts/)
+- **Which path does each host need?** Some hosts can run a normal Java 21 agent, some builds can
+  move into a container, and the rest need Agent8. The background is in
+  [Jenkins requires Java 21. What happens to your AIX 7.1 and RHEL 6 build hosts?](/blog/jenkins-java-21-aix-rhel6-build-hosts/)
+- **Do my plugins work on a Java 8 agent?** Plugins that run their own code on agents are the
+  main open risk. CI tests Git checkout (JGit and command-line git) and credentials binding;
+  others, such as Docker or artifact upload steps, still need testing. If you try one, say how
+  it went in an issue, whether it worked or not.
+- **Does Agent8 run on AIX, Solaris or HP-UX?** It has been tested on all three, not in CI. A
+  report from your OS and Java version adds to what is known.
 
-Leave out hostnames, IP addresses, credentials and anything else you would not put in an
-email to a stranger.
-
-Paid support has fixed prices, listed on the [pricing page](/jenkins/pricing/). Operating system versions and what each host builds are enough.
+**Email when it can't be public.** If your host details can't go in a public issue, use the
+form below. Operating system versions and what each host builds are enough; leave out
+hostnames, IP addresses, credentials and anything else you would not put in an email to a
+stranger.
