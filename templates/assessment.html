@@ -5,12 +5,12 @@
   {% if page.extra.subtitle %}<p class="meta">{{ page.extra.subtitle }}</p>{% endif %}
   {{ page.content | safe }}
 
-  <h2 id="request">Tell us about your build hosts</h2>
+  <h2 id="request">Ask by email</h2>
   {#- There is no backend: the form only composes an email in the visitor's own
       mail program, addressed to config.extra.email. Nothing is stored or sent
       until they press send there. #}
   <form class="lead-form" id="assessment-form" data-to="{{ config.extra.email }}"
-        data-subject="Jenkins legacy build host assessment">
+        data-subject="Question about Jenkins build hosts">
     <label for="f-jenkins">Jenkins version you run today</label>
     <input id="f-jenkins" name="Jenkins version today" type="text" placeholder="e.g. 2.346.3" required>
 
@@ -23,9 +23,6 @@
 
     <label for="f-processor">AIX only: POWER generation</label>
     <input id="f-processor" name="AIX POWER generation" type="text" placeholder="e.g. POWER8">
-
-    <label for="f-deadline">Is there a deadline?</label>
-    <input id="f-deadline" name="Deadline" type="text" placeholder="e.g. audit finding due in Q1">
 
     <label for="f-plugins">Plugins your builds use on these hosts</label>
     <input id="f-plugins" name="Plugins used on these hosts" type="text" placeholder="e.g. git, Maven, credentials binding">
@@ -40,8 +37,8 @@
     <button class="btn btn-primary" type="submit">Write the email</button>
   </form>
   <p class="form-note">Prefer to write it yourself? Email
-  <a href="mailto:{{ config.extra.email }}?subject=Jenkins%20legacy%20build%20host%20assessment">{{ config.extra.email }}</a>
-  {% set copy_subject = "Jenkins legacy build host assessment" %}{% include "partials/copy_mail.html" %}
+  <a href="mailto:{{ config.extra.email }}?subject=Question%20about%20Jenkins%20build%20hosts">{{ config.extra.email }}</a>
+  {% set copy_subject = "Question about Jenkins build hosts" %}{% include "partials/copy_mail.html" %}
   with your Jenkins version and the OS versions of the hosts that hold it back.</p>
 </article>
 <script>

@@ -300,6 +300,7 @@ footer .legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
 
 /* help cards */
 .help-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:20px}
+.help-cards.three{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
 .help-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px 30px;display:flex;flex-direction:column;gap:10px}
 .help-card h3{font-size:20px;line-height:1.3}
 .help-card p{font-size:15px;color:var(--muted)}
@@ -368,3 +369,58 @@ footer .legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
 .hero .sub code,.step code,.faq code,h2 code{font-size:.92em}
 .how-anim{margin-top:36px}
 .how-anim img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}
+
+/* home hero: copy beside the release-lines diagram */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.home-hero{padding:88px 0 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:56px;align-items:center}
+.home-hero h1{margin-top:18px;max-width:14ch}
+.home-hero p.sub{max-width:52ch}
+.lines{
+  margin:0;padding:28px 28px 24px;border:1px solid var(--line);border-radius:16px;
+  background:
+    radial-gradient(circle at 1px 1px,var(--line) 1px,transparent 1.5px) 0 0/16px 16px,
+    var(--panel);
+  box-shadow:0 1px 0 rgba(15,28,42,.03),0 24px 48px -28px rgba(15,28,42,.25);
+}
+.lines svg{display:block;width:100%;height:auto;overflow:visible}
+.lines text{font-family:var(--mono)}
+.l-lane{font-size:11px;font-weight:600;letter-spacing:.1em;fill:var(--muted)}
+.l-note{font-size:12px;fill:var(--muted)}
+.l-up{stroke:var(--line-strong);stroke-width:2;fill:none}
+.l-up-head{stroke:var(--line-strong);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.l-node{fill:var(--panel);stroke:var(--muted);stroke-width:2}
+.l-ver{font-size:13px;font-weight:500;fill:var(--ink)}
+.l-k{stroke:var(--accent-bright);stroke-width:2.5;fill:none;stroke-linecap:round}
+.l-kdot{fill:var(--accent-bright)}
+.l-kring{fill:none;stroke:var(--accent-bright);stroke-width:1.5;opacity:.45}
+.l-kver{font-size:13px;font-weight:600;fill:var(--accent)}
+.l-title{font-family:var(--sans) !important;font-size:15px;font-weight:600;fill:var(--ink)}
+.l-sub{font-family:var(--sans) !important;font-size:13px;fill:var(--muted)}
+.l-rule{stroke:var(--line);stroke-width:1;stroke-dasharray:2 4}
+.l-host{fill:var(--chip-bg);stroke:var(--line-strong);stroke-width:1}
+.l-ht{font-size:12.5px;fill:var(--ink)}
+.l-a8{stroke:var(--accent-bright);stroke-width:1.8;fill:none;stroke-dasharray:5 4}
+.l-a8tag{fill:var(--accent-bright)}
+.l-a8t{font-size:12px;font-weight:600;fill:#0b2239}
+.l-ctl{fill:var(--navy);stroke:#24425f;stroke-width:1}
+.l-ctlk{font-size:11px;letter-spacing:.08em;fill:#8fa6bc}
+.l-ctlv{font-size:14px;font-weight:600;fill:#ffffff}
+@media(max-width:940px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .lines{max-width:560px}
+}
+@media(max-width:480px){
+  .home-hero{padding:56px 0 48px}
+  .lines{margin:0 -12px;padding:18px 12px 14px;border-radius:14px}
+  /* The diagram scales down to about 0.75 here; larger type keeps it readable. */
+  .l-lane{font-size:13px}
+  .l-note{font-size:13.5px}
+  .l-ver,.l-kver{font-size:15px}
+  .l-title{font-size:16.5px}
+  .l-sub{font-size:14px}
+  .l-ht{font-size:14px}
+  .l-a8t{font-size:13.5px}
+  .l-ctlk{font-size:12.5px}
+  .l-ctlv{font-size:16px}
+}
