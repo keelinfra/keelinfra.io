@@ -2,9 +2,10 @@
 title = "Which Jenkins LTS lines can go straight to 2.580.2"
 description = "We started Jenkins 328 times: every LTS line from 2.60.3 to 2.568.3, with the 100 and the 300 most installed plugins, upgraded to 2.580.2 by replacing only the core and in steps. From 2.401.3 a core-only upgrade loaded every plugin. From 2.346.3 or older it never did, because 2.580.2 no longer ships the plugins that were split out of core."
 path = "jenkins/upgrade-matrix"
-template = "page.html"
+template = "matrix.html"
 
 [extra]
+matrix_data = "static/jenkins/upgrade-matrix/2.580.2/matrix.json"
 og_image = "/assets/social-preview-jenkins-upgrade-check.png"
 subtitle = "Rehearsed 2026-10-31 · 38 LTS lines · 100 and 300 plugins · 328 Jenkins starts"
 +++
@@ -15,6 +16,8 @@ older it never did: plugins failed to load, and with 300
 plugins 12 of those 21 lines did not start at all. Going in steps, through 2.346.3, 2.462.3 and 2.541.3 and
 changing Java on the way, loaded every plugin from every line. 2.580.2 needs Java 21, on the
 controller and on the agents.
+
+<!-- matrix-strip -->
 
 **New in 2.580.2.** It is a security release: the
 [2026-10-28 advisory](https://www.jenkins.io/security/advisory/2026-10-28/) covers 2.580.1 and

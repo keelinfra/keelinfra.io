@@ -284,7 +284,7 @@ footer .legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
 .checks{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px;color:var(--body)}
 .checks li{display:flex;gap:10px}
 .checks li::before{content:"";flex-shrink:0;width:18px;height:18px;margin-top:3px;background:var(--ok);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/contain no-repeat}
-.check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:20px}
+.check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin-top:20px}
 .check-grid li{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;color:var(--ink)}
 
 /* navy band */
@@ -424,3 +424,61 @@ footer .legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
   .l-ctlk{font-size:12.5px}
   .l-ctlv{font-size:16px}
 }
+
+/* wide prose pages (the upgrade matrix): text keeps its measure, tables and
+   figures use the full container */
+.prose.wide table,.prose.wide .mx{width:min(1072px,calc(100vw - 48px));position:relative;left:50%;transform:translateX(-50%)}
+.prose.wide table{font-size:14px}
+.prose.wide th,.prose.wide td{padding:10px 14px;white-space:nowrap}
+.prose.wide tbody tr:hover td{background:color-mix(in srgb,var(--muted) 6%,transparent)}
+.prose.wide td:first-child{font-family:var(--mono);font-weight:500}
+
+/* matrix strip: one cell per LTS line. Status colors validated with the
+   dataviz palette checks (light on #fff, dark on #121e2a); every cell also
+   carries a glyph, and the table below is the full view. */
+:root{--st-ok:#1f8a5a;--st-part:#d99a2b;--st-no:#c8412f;--st-other:var(--line-strong)}
+@media (prefers-color-scheme: dark){:root{--st-ok:#2e9d6a;--st-part:#bf8a1c;--st-no:#e0566a}}
+.mx{margin:28px 0 8px;padding:24px 26px 20px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.mx-head{display:flex;flex-direction:column;gap:2px}
+.mx-head strong{font-size:16px;letter-spacing:-.01em}
+.mx-head span{font-size:13px;color:var(--muted)}
+.mx-scroll{overflow-x:auto;margin-top:18px;padding-bottom:4px}
+.mx-grid{display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:6px;align-items:center;min-width:680px}
+.mx-row{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.mx-strip,.mx-ticks{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:2px}
+.mx-c{display:flex;align-items:center;justify-content:center;height:30px;border-radius:4px;font:600 12px/1 var(--mono);color:#fff;font-style:normal;cursor:default;transition:transform .12s ease}
+.mx-strip .mx-c:hover{transform:translateY(-2px)}
+.mx-c.ok{background:var(--st-ok)}
+.mx-c.part{background:var(--st-part);color:#2a1a00}
+.mx-c.no{background:var(--st-no)}
+.mx-t{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap;border-left:1px solid var(--line-strong);padding:3px 0 0 5px}
+.mx-t.end{border-left:none;border-right:1px solid var(--line-strong);padding:3px 5px 0 0;justify-self:end;direction:rtl}
+.mx-legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px !important;font-size:13.5px;color:var(--body)}
+.mx-legend span{display:inline-flex;align-items:center;gap:8px}
+.mx-legend .mx-c{width:20px;height:20px;font-size:11px}
+.mx-share{display:flex;gap:2px;height:10px;margin-top:20px;border-radius:5px;overflow:hidden}
+.mx-share span{display:block;min-width:2px}
+.mx-share .ok{background:var(--st-ok)}.mx-share .part{background:var(--st-part)}.mx-share .no{background:var(--st-no)}.mx-share .other{background:var(--st-other)}
+.mx-share-k{font-size:13.5px;color:var(--muted);margin-top:10px !important}
+.mx-share-k b{color:var(--ink);font-weight:600}
+@media(max-width:480px){.mx{padding:18px 14px 16px}}
+.mx-share-k .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin:0 5px 0 1px;vertical-align:0}
+.sw.ok{background:var(--st-ok)}.sw.part{background:var(--st-part)}.sw.no{background:var(--st-no)}.sw.other{background:var(--st-other)}
+
+/* Agent8 page: the error section */
+#errors .sub{margin-top:12px;color:var(--body);max-width:76ch}
+#errors pre.term{margin-top:20px;margin-bottom:20px}
+
+/* About: header + project list above the prose */
+.about-head{max-width:760px;margin:0 auto;padding:64px 24px 0}
+.about-head h1{font-size:clamp(30px,4.5vw,44px);letter-spacing:-.025em;line-height:1.12;margin-top:14px;text-wrap:balance}
+.about-head .lead{margin-top:16px;font-size:18px;color:var(--muted);max-width:56ch}
+.about-projects{max-width:760px;margin:32px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:12px}
+.about-projects a{display:flex;gap:14px;align-items:flex-start;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;text-decoration:none;transition:border-color .15s ease,transform .15s ease}
+.about-projects a:hover{border-color:var(--line-strong);transform:translateY(-1px)}
+.about-projects strong{display:block;font-size:15.5px;letter-spacing:-.01em}
+.about-projects span{display:block;font-size:14px;color:var(--muted);margin-top:3px;line-height:1.5}
+.about-body{padding-top:8px}
+.prose ol.principles{list-style:none;margin-left:0;counter-reset:p;display:grid;gap:12px}
+.prose ol.principles li{counter-increment:p;position:relative;margin:0;padding:16px 18px 16px 58px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.prose ol.principles li::before{content:"0" counter(p);position:absolute;left:18px;top:16px;font:500 14px/1.65 var(--mono);color:var(--accent)}

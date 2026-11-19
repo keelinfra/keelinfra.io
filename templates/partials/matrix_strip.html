@@ -1,0 +1,44 @@
+{#- One cell per LTS line in the matrix JSON (rows for the 300-plugin set),
+    oldest left: how a core-only upgrade and the stepped upgrade came out,
+    plus the share of controllers on each outcome. The table below it on the
+    page is the accessible, complete view of the same data. -#}
+{%- set m = load_data(path=page.extra.matrix_data) -%}
+{%- set_global sh_no = 0 -%}{%- set_global sh_part = 0 -%}{%- set_global sh_ok = 0 -%}
+{%- set_global core_cells = "" -%}{%- set_global step_cells = "" -%}{%- set_global ticks = "" -%}{%- set_global n_no = 0 -%}{%- set_global n_part = 0 -%}{%- set_global n = 0 -%}{%- set_global first_from = "" -%}{%- set_global last_from = "" -%}
+{%- for r in m.rows -%}{%- if r.top == 300 -%}
+{%- set_global n = n + 1 -%}{%- if n == 1 %}{% set_global first_from = r.from %}{% endif %}{%- set_global last_from = r.from -%}
+{%- set a = r.asIs -%}{%- set pct = r.share * 100 -%}
+{%- if pct < 0.1 %}{% set pcts = "<0.1%" %}{% else %}{% set pcts = pct | round(precision=1) ~ "%" %}{% endif -%}
+{%- if not a.started -%}
+{%- set cls = "no" %}{% set g = "×" %}{% set what = "does not start" %}{% set_global sh_no = sh_no + r.share %}{% set_global n_no = n_no + 1 -%}
+{%- elif a.failed > 0 or a.broken > 0 -%}
+{%- set cls = "part" %}{% set g = "!" %}{% set what = "starts; " ~ a.failed ~ " plugins fail, " ~ a.broken ~ " load partly" %}{% set_global sh_part = sh_part + r.share %}{% set_global n_part = n_part + 1 -%}
+{%- else -%}
+{%- set cls = "ok" %}{% set g = "✓" %}{% set what = "all " ~ a.plugins ~ " plugins load" %}{% set_global sh_ok = sh_ok + r.share -%}
+{%- endif -%}
+{%- set_global core_cells = core_cells ~ '<span class="mx-c ' ~ cls ~ '" title="' ~ r.from ~ ' · ' ~ pcts ~ ' of controllers · core only: ' ~ what ~ '">' ~ g ~ '</span>' -%}
+{%- set last = r.stops | last -%}
+{%- if last.started and last.failed == 0 and last.broken == 0 -%}
+{%- set_global step_cells = step_cells ~ '<span class="mx-c ok" title="' ~ r.from ~ ' · in ' ~ r.stops | length ~ ' steps: all ' ~ last.plugins ~ ' plugins load">✓</span>' -%}
+{%- else -%}
+{%- set_global step_cells = step_cells ~ '<span class="mx-c part" title="' ~ r.from ~ ' · in steps: some plugins fail">!</span>' -%}
+{%- endif -%}
+{%- if n == 1 or r.from == "2.164.3" or r.from == "2.401.3" -%}
+{%- set_global ticks = ticks ~ '<span class="mx-t" style="grid-column:' ~ n ~ '">' ~ r.from ~ '</span>' -%}
+{%- endif -%}
+{%- endif -%}{%- endfor -%}
+{%- set_global ticks = ticks ~ '<span class="mx-t end" style="grid-column:' ~ n ~ '">' ~ last_from ~ '</span>' -%}
+{%- set other = 1 - sh_no - sh_part - sh_ok -%}
+{%- set p_no = sh_no * 100 -%}{%- set p_part = sh_part * 100 -%}{%- set p_ok = sh_ok * 100 -%}{%- set p_other = other * 100 -%}
+
+<figure class="mx" aria-describedby="mx-sum">
+<figcaption class="mx-head"><strong>From each LTS line to {{ m.to }}, with the 300 most installed plugins</strong><span>one cell per line, {{ first_from }} on the left, {{ last_from }} on the right · hover a cell for details</span></figcaption>
+<div class="mx-scroll"><div class="mx-grid" style="--n:{{ n }}">
+<span class="mx-row">Core only</span><div class="mx-strip" aria-hidden="true">{{ core_cells | safe }}</div>
+<span class="mx-row">In steps</span><div class="mx-strip" aria-hidden="true">{{ step_cells | safe }}</div>
+<span></span><div class="mx-ticks" aria-hidden="true">{{ ticks | safe }}</div>
+</div></div>
+<p class="mx-legend"><span><i class="mx-c ok">✓</i>every plugin loads</span><span><i class="mx-c part">!</i>starts, some plugins fail or load partly</span><span><i class="mx-c no">×</i>does not start</span></p>
+<div class="mx-share" aria-hidden="true"><span class="no" style="width:{{ p_no }}%"></span><span class="part" style="width:{{ p_part }}%"></span><span class="ok" style="width:{{ p_ok }}%"></span><span class="other" style="width:{{ p_other }}%"></span></div>
+<p class="mx-share-k" id="mx-sum">Share of the {{ m.controllers | num_format }} controllers that report usage, after a core-only upgrade: <i class="sw no"></i><b>{{ p_no | round(precision=1) }}%</b> on the {{ n_no }} lines that do not start, <i class="sw part"></i><b>{{ p_part | round(precision=1) }}%</b> on the {{ n_part }} that start with plugins failing, <i class="sw ok"></i><b>{{ p_ok | round(precision=1) }}%</b> on lines where every plugin loads, and <i class="sw other"></i>{{ p_other | round(precision=1) }}% on versions outside the tested lines. In steps, every line loads every plugin.</p>
+</figure>
