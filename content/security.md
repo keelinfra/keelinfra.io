@@ -2,6 +2,7 @@
 title = "Security & verifiability"
 description = "How to report vulnerabilities in keelinfra's tools, how long they get free security updates, how to check a release, how keelinfra reads the Cyber Resilience Act, and why nothing phones home."
 template = "page.html"
+aliases = ["/cra/"]
 +++
 
 ## Report a vulnerability
@@ -66,8 +67,9 @@ jenkins-upgrade-check. Both are default-class products (not listed in Annex III)
 
 This is our reading, not legal advice. If you ship software into the EU and want to know what it
 means for your own release pipeline, [ask us](mailto:hello@keelinfra.io?subject=CRA%20question).
-The tooling for SBOMs, attestations and exploited-vulnerability alerts is open source:
-[CRA Release Ledger](/cra/).
+The open-source [release-ledger](https://github.com/keelinfra/release-ledger) Action records SBOMs
+and attestations per release and flags actively exploited vulnerabilities. It has been in maintenance
+mode since 25 November 2026: bug and security fixes only, and no hosted service.
 
 ## What we don't have
 
